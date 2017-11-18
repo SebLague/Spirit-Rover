@@ -29,6 +29,17 @@ public class Console : MonoBehaviour {
         GenerateTextFields();
         ClearTextFields();
         lines.Add("");
+
+
+    }
+
+    void Start()
+    {
+        CustomInput.instance.RegisterKey(KeyCode.Backspace);
+        CustomInput.instance.RegisterKey(KeyCode.LeftArrow);
+        CustomInput.instance.RegisterKey(KeyCode.RightArrow);
+        CustomInput.instance.RegisterKey(KeyCode.UpArrow);
+        CustomInput.instance.RegisterKey(KeyCode.DownArrow);
     }
 
     void Update () {
@@ -82,7 +93,7 @@ public class Console : MonoBehaviour {
 		}
 
         // Backspace
-        if (Input.GetKeyDown(KeyCode.Backspace))
+        if (CustomInput.instance.GetKeyPress(KeyCode.Backspace))
         {
             if (lines[selectedLineIndex].Length == 0)
             {
@@ -107,25 +118,54 @@ public class Console : MonoBehaviour {
         }
 
         // Arrow keys
-		if (Input.GetKeyDown(KeyCode.UpArrow))
+		if (CustomInput.instance.GetKeyPress(KeyCode.UpArrow))
 		{
-            selectedLineIndex = Mathf.Clamp(selectedLineIndex - 1, 0, int.MaxValue);
+            if (shift)
+            {
+                selectedLineIndex = 0;
+            }
+            else
+            {
+                selectedLineIndex = Mathf.Clamp(selectedLineIndex - 1, 0, int.MaxValue);
+            }
             caretCharIndex = lines[selectedLineIndex].Length;
 		}
-		if (Input.GetKeyDown(KeyCode.DownArrow))
+		if (CustomInput.instance.GetKeyPress(KeyCode.DownArrow))
 		{
-            selectedLineIndex = Mathf.Clamp(selectedLineIndex + 1, 0, lines.Count - 1);
+            if (shift && lines.Count>0)
+			{
+                selectedLineIndex = lines.Count-1;
+			}
+			else
+			{
+				selectedLineIndex = Mathf.Clamp(selectedLineIndex + 1, 0, lines.Count - 1);
+			}
+           
             caretCharIndex = lines[selectedLineIndex].Length;
 		}
 
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (CustomInput.instance.GetKeyPress(KeyCode.LeftArrow))
 		{
-            caretCharIndex = Mathf.Clamp(caretCharIndex - 1, 0, int.MaxValue);
+            if (shift)
+            {
+                caretCharIndex = 0;
+            }
+            else
+            {
+                caretCharIndex = Mathf.Clamp(caretCharIndex - 1, 0, int.MaxValue);
+            }
 		}
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (CustomInput.instance.GetKeyPress(KeyCode.RightArrow))
 		{
-            caretCharIndex = Mathf.Clamp(caretCharIndex + 1, 0, Mathf.Max(0,lines[selectedLineIndex].Length));
+            if (shift)
+            {
+                caretCharIndex = lines[selectedLineIndex].Length;
+            }
+            else
+            {
+                caretCharIndex = Mathf.Clamp(caretCharIndex + 1, 0, Mathf.Max(0, lines[selectedLineIndex].Length));
+            }
 		}
     }
 
