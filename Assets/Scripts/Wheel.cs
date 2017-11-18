@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Wheel : MonoBehaviour {
 
+    public bool grounded;
     float currHeight;
     public LayerMask mask;
     Transform frontOfWheel;
@@ -13,6 +14,8 @@ public class Wheel : MonoBehaviour {
 
     const float maxDelta = .5f;
     const float returnToNormalSpeed = .5f;
+    const float groundedSkin = .1f;
+
     private void Start()
     {
         //mask = LayerMask.NameToLayer("Collision");
@@ -26,48 +29,51 @@ public class Wheel : MonoBehaviour {
     private void FixedUpdate()
     {
         RaycastHit hit;
+        grounded = false;
 
-        if (Physics.Raycast(frontOfWheel.position, -frontOfWheel.forward, out hit, radius))
+        if (Physics.Raycast(frontOfWheel.position, -frontOfWheel.forward, out hit, radius,mask))
         {
             if (hit.collider != null)
             {
-		
+                grounded = true;
                 float desiredWheelCentreHeight = hit.point.y + radius;
                 float deltaHeight = desiredWheelCentreHeight - transform.position.y;
                 float targetParentLocalHeight = parent.localPosition.z + deltaHeight;
 
                 if (targetParentLocalHeight < initialParentLocalHeight)
                 {
-                   // print("less");
                     parent.localPosition = new Vector3(parent.localPosition.x, parent.localPosition.y, initialParentLocalHeight);
                 }
                 else if (targetParentLocalHeight - initialParentLocalHeight > maxDelta)
                 {
-                    //print("more");
                     parent.localPosition = new Vector3(parent.localPosition.x, parent.localPosition.y, initialParentLocalHeight + maxDelta);
                 }
                 else
                 {
-                    //print("set : " + targetParentLocalHeight);
-                   // Debug.Log(parent.localPosition.z + "  " + targetParentLocalHeight);
                     parent.localPosition = new Vector3(parent.localPosition.x, parent.localPosition.y, targetParentLocalHeight);
                 }
-
-                   // Debug.DrawRay(frontOfWheel.position, -frontOfWheel.forward * (hit.distance), Color.green);
 			
             }
         }
 
         float returnToNormal = Mathf.MoveTowards(parent.localPosition.z, initialParentLocalHeight, Time.fixedDeltaTime * returnToNormalSpeed);
         parent.localPosition = new Vector3(parent.localPosition.x, parent.localPosition.y, returnToNormal);
+
+        if (!grounded)
+        {
+            if (Physics.Raycast(frontOfWheel.position, -frontOfWheel.forward, radius + groundedSkin,mask))
+            {
+                grounded = true;
+            }
+        }
     }
 
-    public void Raise(float height)
+
+    private void OnDrawGizmos()
     {
-       // Debug.Log("rause");
-        //float deltaHeight = height - currHeight;
-        //currHeight = height;
-        //transform.position += transform.forward * deltaHeight;
+        Gizmos.color = (grounded) ? Color.green : Color.red;
+        Gizmos.DrawSphere(transform.position, .5f);
     }
+
 
 }

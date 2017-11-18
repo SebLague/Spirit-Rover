@@ -190,7 +190,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &223401902
 GameObject:
@@ -342,7 +342,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &855050106
 Prefab:
@@ -453,7 +453,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1116060393 stripped
 GameObject:
@@ -510,7 +510,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a28aacfda384c4353bbdcaab8538216e, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: a28aacfda384c4353bbdcaab8538216e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -571,7 +571,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1183745307}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -644.9, y: 0, z: 0}
+  m_LocalPosition: {x: -753.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1359340652}
@@ -580,8 +580,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -644.9, y: 0}
-  m_SizeDelta: {x: -1289.7, y: 0}
+  m_AnchoredPosition: {x: -753.5, y: 0}
+  m_SizeDelta: {x: -1506.8, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1183745309
 MonoBehaviour:
@@ -595,7 +595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.08823532, g: 0.08823532, b: 0.08823532, a: 1}
+  m_Color: {r: 0.08823532, g: 0.08823532, b: 0.08823532, a: 0.822}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -679,7 +679,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1359340649}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -285.24976, y: 486.58508, z: 0}
+  m_LocalPosition: {x: -176.6997, y: 473, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1183745308}
@@ -687,7 +687,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 29.90039, y: 486.58508}
+  m_AnchoredPosition: {x: 29.90039, y: 473}
   m_SizeDelta: {x: -59, y: -1019}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &1422768305
@@ -789,7 +789,7 @@ GameObject:
   - component: {fileID: 1731743736}
   - component: {fileID: 1731743735}
   - component: {fileID: 1731743734}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -895,7 +895,7 @@ RectTransform:
   - {fileID: 1183745308}
   - {fileID: 1968544231}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1055,15 +1055,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50e04cb49ea3347d18656b7333acbcda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxNumLinesOnScreen: 5
-  charLimit: 20
+  maxNumLinesOnScreen: 16
+  charLimit: 15
   lineSpacing: 25
   textTemplate: {fileID: 1359340650}
   caret: {fileID: 1968544232}
   blinkTime: 0.6
   blinkDelay: 0.6
-  testString: test stringAAAAA
+  testString: accelerate 15
   textFields:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -1080,7 +1091,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2142506219
 MonoBehaviour:
@@ -1093,7 +1104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff87e0953acc3408f9d0c4808f330545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedSlow: 0.2
+  speedSlow: 0.15
   speedFast: 0.08
-  delayToSlow: 1
+  delayToSlow: 0.8
   delayToFast: 1

@@ -13,6 +13,7 @@ public class Rover : MonoBehaviour {
     float wheelAngle;
 
     public Transform[] wheels;
+    Wheel[] wheelRefs;
 
     public event System.Action<Command> OnCommandRunForFirstTime;
 
@@ -29,6 +30,11 @@ public class Rover : MonoBehaviour {
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        wheelRefs = new Wheel[wheels.Length];
+        for (int i = 0; i < wheels.Length; i++)
+        {
+            wheelRefs[i] = wheels[i].GetComponent<Wheel>();
+        }
     }
 
     private void FixedUpdate()
@@ -65,20 +71,29 @@ public class Rover : MonoBehaviour {
 
         float planeDst = new Vector2(rb.velocity.x, rb.velocity.z).magnitude;
         float bodyDeltaAngle = Mathf.Min(planeDst * dstToAngle, Mathf.Abs(wheelAngle)) * Mathf.Sign(wheelAngle);
-        rb.MoveRotation(Quaternion.Euler(transform.eulerAngles + transform.up * bodyDeltaAngle));
+
         wheelAngle -= bodyDeltaAngle;
-        Vector2 planeDir = new Vector2(transform.forward.x, transform.forward.z).normalized;
-
+ 
         Vector3 wheelForwardSum = Vector3.zero;
+        bool isGrounded = false;
 
-        foreach (Transform t in wheels)
+        for (int i = 0; i < wheels.Length; i++)
         {
-            t.localEulerAngles = Vector3.forward * wheelAngle;
-            wheelForwardSum += -t.up;
-        }
+			wheels[i].localEulerAngles = Vector3.forward * wheelAngle;
+			wheelForwardSum += -wheels[i].up;
+            if (wheelRefs[i].grounded)
+            {
+                isGrounded = true;
+            }
+		}
 
 		Vector3 wheelForward = wheelForwardSum / wheels.Length;
-        rb.MovePosition(rb.position + wheelForward * Time.fixedDeltaTime * speed);
+
+        if (isGrounded)
+        {
+            rb.MovePosition(rb.position + wheelForward * Time.fixedDeltaTime * speed);
+            rb.MoveRotation(Quaternion.Euler(transform.eulerAngles + transform.up * bodyDeltaAngle));
+        }
     }
 
     void FinishedRunningCommands()
