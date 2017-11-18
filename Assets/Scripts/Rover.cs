@@ -9,7 +9,7 @@ public class Rover : MonoBehaviour {
     public float brake = 100;
     public float maxWheelAngle = 45;
     public float dstToAngle = 2;
-    public float speed;
+    float speed;
     float wheelAngle;
 
     public Transform[] wheels;
@@ -33,7 +33,7 @@ public class Rover : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        speed = rb.velocity.magnitude;
+       // speed = rb.velocity.magnitude;
         if (running)
         {
 			
@@ -58,26 +58,27 @@ public class Rover : MonoBehaviour {
                     running = false;
                 }
             }
-
             RunCurrentCommand();
         }
 
         float targetAngle = transform.eulerAngles.y + wheelAngle;
-        Vector3 wheelForward = new Vector3(Mathf.Sin(targetAngle * Mathf.Deg2Rad), 0, Mathf.Cos(targetAngle * Mathf.Deg2Rad));
-
-        Debug.DrawRay(transform.position, wheelForward * 10, Color.red);
 
         float planeDst = new Vector2(rb.velocity.x, rb.velocity.z).magnitude;
         float bodyDeltaAngle = Mathf.Min(planeDst * dstToAngle, Mathf.Abs(wheelAngle)) * Mathf.Sign(wheelAngle);
         rb.MoveRotation(Quaternion.Euler(transform.eulerAngles + transform.up * bodyDeltaAngle));
         wheelAngle -= bodyDeltaAngle;
         Vector2 planeDir = new Vector2(transform.forward.x, transform.forward.z).normalized;
-        rb.velocity = new Vector3(wheelForward.x * planeDst, rb.velocity.y, wheelForward.z * planeDst);
-        //rb.MoveRotation(Quaternion.Euler(Quaternion.rot
+
+        Vector3 wheelForwardSum = Vector3.zero;
+
         foreach (Transform t in wheels)
         {
             t.localEulerAngles = Vector3.forward * wheelAngle;
+            wheelForwardSum += -t.up;
         }
+
+		Vector3 wheelForward = wheelForwardSum / wheels.Length;
+        rb.MovePosition(rb.position + wheelForward * Time.fixedDeltaTime * speed);
     }
 
     void FinishedRunningCommands()
@@ -90,21 +91,13 @@ public class Rover : MonoBehaviour {
         switch (currentCommand.commandType)
         {
             case Command.CommandType.Accelerate:
-                rb.AddForce(transform.forward * acceleration * Time.fixedDeltaTime, ForceMode.Acceleration);
+                speed += acceleration * Time.fixedDeltaTime;
                 break;
             case Command.CommandType.Brake:
-                Vector3 planeVelocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-                if (planeVelocity.magnitude > 0.0001f)
+                speed -= brake * Time.fixedDeltaTime;
+                if (speed < 0)
                 {
-                    Vector3 brakeDir = -planeVelocity.normalized;
-                    float moveAngle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
-                    rb.AddForce(brakeDir * brake * Time.fixedDeltaTime, ForceMode.Acceleration);
-                    float moveAngleAfterBraking = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
-                    // dont allow deceleration to begin accelerating rover in opp direction
-                    if (Mathf.DeltaAngle(moveAngle, moveAngleAfterBraking) > 90)
-                    {
-                        rb.velocity = new Vector3(0, rb.velocity.y, 0);
-                    }
+                    speed = 0;
                 }
 				break;
             case Command.CommandType.Left:

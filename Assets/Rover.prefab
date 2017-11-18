@@ -1880,6 +1880,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b109039dcd9af4f8ca21affaebef3967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &114069850623617338
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1891,6 +1894,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b109039dcd9af4f8ca21affaebef3967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &114345697465364282
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1902,12 +1908,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f345e06eef464a149bdd6f19149e95e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 20
+  acceleration: 0.5
   turnSpeed: 30
-  brake: 200
+  brake: 0.5
   maxWheelAngle: 45
   dstToAngle: 0.3
-  speed: 0
   wheels:
   - {fileID: 4215882423821304}
   - {fileID: 4867738398459790}
@@ -1926,6 +1931,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b109039dcd9af4f8ca21affaebef3967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &114589765645812686
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1937,6 +1945,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b109039dcd9af4f8ca21affaebef3967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &114601904227206886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1948,6 +1959,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b109039dcd9af4f8ca21affaebef3967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &114762380123437204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1959,3 +1973,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b109039dcd9af4f8ca21affaebef3967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mask:
+    serializedVersion: 2
+    m_Bits: 512

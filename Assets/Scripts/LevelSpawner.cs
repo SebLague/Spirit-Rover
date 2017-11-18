@@ -32,7 +32,8 @@ public class LevelSpawner : MonoBehaviour {
 
         currentLevel = Instantiate(levels[i], Vector3.zero, Quaternion.identity, transform);
         p = currentLevel.roverSpawn;
-        Invoke("SpawnRover", 1);
+        SpawnRover();
+        //Invoke("SpawnRover", 1);
     }
 
     void SpawnRover()

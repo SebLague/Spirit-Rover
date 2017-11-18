@@ -8,6 +8,6 @@ PhysicMaterial:
   m_Name: Rover
   dynamicFriction: 0.1
   staticFriction: 0.1
-  bounciness: 0.1
+  bounciness: 0
   frictionCombine: 1
   bounceCombine: 0
