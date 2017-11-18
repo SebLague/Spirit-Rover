@@ -536,7 +536,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1359340649}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -285.25012, y: 486.58508, z: 0}
+  m_LocalPosition: {x: -285.25024, y: 486.58508, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1183745308}
@@ -544,7 +544,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 29.900024, y: 486.58508}
+  m_AnchoredPosition: {x: 29.899902, y: 486.58508}
   m_SizeDelta: {x: -59, y: -1019}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &1742379915
@@ -743,6 +743,8 @@ MonoBehaviour:
   lineSpacing: 25
   textTemplate: {fileID: 1359340650}
   caret: {fileID: 1968544232}
+  blinkTime: 0.6
+  blinkDelay: 0.6
   testString: test stringAAAAA
   textFields:
   - {fileID: 0}

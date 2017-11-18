@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Console : MonoBehaviour {
 
+    const string runString = "run";
     const string legalChars = "abcdefghijklmnopqrstuvwxyz1234567890 .,/";
 
     public int maxNumLinesOnScreen = 10;
@@ -12,6 +13,10 @@ public class Console : MonoBehaviour {
     public float lineSpacing = 2;
     public Text textTemplate;
 	public Image caret;
+    public float blinkTime = .2f;
+    public float blinkDelay = 1f;
+    float lastBlinkTime;
+    float lastKeyTime;
 
     [HideInInspector]
     public string testString;
@@ -45,14 +50,14 @@ public class Console : MonoBehaviour {
     void Update () {
        
         // text input
-        string input = Input.inputString.ToLower();
+        string input = Input.inputString;
         foreach (char c in input)
         {
             if (lines[selectedLineIndex].Length >= charLimit)
             {
                 break;
             }
-            if (legalChars.Contains(c.ToString()))
+            if (legalChars.Contains(c.ToString().ToLower()))
             {
                 if (caretCharIndex < lines[selectedLineIndex].Length)
                 {
@@ -63,6 +68,7 @@ public class Console : MonoBehaviour {
                     lines[selectedLineIndex] += c;
                 }
                 caretCharIndex++;
+                lastKeyTime = Time.time;
             }
         }
 
@@ -79,6 +85,7 @@ public class Console : MonoBehaviour {
         // New line
 		if (Input.GetKeyDown(KeyCode.Return))
 		{
+			lastKeyTime = Time.time;
             if (selectedLineIndex < lines.Count - 1)
             {
                 lines.Insert(selectedLineIndex + 1, "");
@@ -95,6 +102,7 @@ public class Console : MonoBehaviour {
         // Backspace
         if (CustomInput.instance.GetKeyPress(KeyCode.Backspace))
         {
+			lastKeyTime = Time.time;
             if (lines[selectedLineIndex].Length == 0)
             {
                 if (lines.Count != 1)
@@ -120,6 +128,7 @@ public class Console : MonoBehaviour {
         // Arrow keys
 		if (CustomInput.instance.GetKeyPress(KeyCode.UpArrow))
 		{
+			lastKeyTime = Time.time;
             if (shift)
             {
                 selectedLineIndex = 0;
@@ -132,6 +141,7 @@ public class Console : MonoBehaviour {
 		}
 		if (CustomInput.instance.GetKeyPress(KeyCode.DownArrow))
 		{
+			lastKeyTime = Time.time;
             if (shift && lines.Count>0)
 			{
                 selectedLineIndex = lines.Count-1;
@@ -147,6 +157,7 @@ public class Console : MonoBehaviour {
 
         if (CustomInput.instance.GetKeyPress(KeyCode.LeftArrow))
 		{
+			lastKeyTime = Time.time;
             if (shift)
             {
                 caretCharIndex = 0;
@@ -158,6 +169,7 @@ public class Console : MonoBehaviour {
 		}
         if (CustomInput.instance.GetKeyPress(KeyCode.RightArrow))
 		{
+			lastKeyTime = Time.time;
             if (shift)
             {
                 caretCharIndex = lines[selectedLineIndex].Length;
@@ -188,23 +200,41 @@ public class Console : MonoBehaviour {
             }
             textFields[i].text = lines[firstDisplayedLineIndex + i];
         }
-    
-        // Draw caret
-        Text selectedField = textFields[selectedLineIndex - firstDisplayedLineIndex];
-        selectedField.font.RequestCharactersInTexture(selectedField.text, selectedField.fontSize, selectedField.fontStyle);
 
-        float caretOffsetX = 0;
-
-   
-        for (int i = 0; i < caretCharIndex; i++)
+		// Draw caret
+		bool caretVisible = false;
+        if (Time.time - lastKeyTime > blinkDelay)
         {
-            CharacterInfo info;
-            selectedField.font.GetCharacterInfo(selectedField.text[i], out info, selectedField.fontSize, selectedField.fontStyle);
-            caretOffsetX += info.advance;
+            caretVisible = (int)((Time.time - (lastKeyTime+blinkDelay))/blinkTime) % 2 == 0;
+        }
+        else
+        {
+            caretVisible = true;
         }
 
-        caret.rectTransform.position = selectedField.rectTransform.position;
-        caret.rectTransform.localPosition += Vector3.right * (caretOffsetX + caret.rectTransform.rect.width / 2f);
+        if (caretVisible)
+        {
+            caret.enabled = true;
+            Text selectedField = textFields[selectedLineIndex - firstDisplayedLineIndex];
+            selectedField.font.RequestCharactersInTexture(selectedField.text, selectedField.fontSize, selectedField.fontStyle);
+
+            float caretOffsetX = 0;
+
+
+            for (int i = 0; i < caretCharIndex; i++)
+            {
+                CharacterInfo info;
+                selectedField.font.GetCharacterInfo(selectedField.text[i], out info, selectedField.fontSize, selectedField.fontStyle);
+                caretOffsetX += info.advance;
+            }
+
+            caret.rectTransform.position = selectedField.rectTransform.position;
+            caret.rectTransform.localPosition += Vector3.right * (caretOffsetX + caret.rectTransform.rect.width / 2f);
+        }
+        else
+        {
+            caret.enabled = false;
+        }
     }
 
     public void GenerateTextFields()
