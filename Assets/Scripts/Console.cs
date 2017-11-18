@@ -78,6 +78,27 @@ public class Console : MonoBehaviour {
 
 	}
 
+    void Run()
+    {
+        FindObjectOfType<Level>().ResetLevel();
+        Command[] commands = Command.CommandsFromLines(lines);
+        Rover rover = FindObjectOfType<Rover>();
+        rover.SetCommands(commands);
+    }
+
+    bool OnTextEntered(int lineIndex)
+    {
+        string lineText = lines[lineIndex];
+        if (lineText.Contains(runString))
+        {
+            lines[lineIndex] = lines[lineIndex].Replace(runString, "");
+            lines[lineIndex] = lines[lineIndex].Replace("/", "");
+            Run();
+            return true;
+        }
+        return false;
+    }
+
     void HandleControlInput()
     {
 		bool shift = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
@@ -85,18 +106,25 @@ public class Console : MonoBehaviour {
         // New line
 		if (Input.GetKeyDown(KeyCode.Return))
 		{
-			lastKeyTime = Time.time;
-            if (selectedLineIndex < lines.Count - 1)
+            bool specialCommandEntered = OnTextEntered(selectedLineIndex);
+            if (specialCommandEntered)
             {
-                lines.Insert(selectedLineIndex + 1, "");
+                caretCharIndex = lines[selectedLineIndex].Length;
             }
             else
             {
-                lines.Add("");
+                lastKeyTime = Time.time;
+                if (selectedLineIndex < lines.Count - 1)
+                {
+                    lines.Insert(selectedLineIndex + 1, "");
+                }
+                else
+                {
+                    lines.Add("");
+                }
+                selectedLineIndex++;
+                caretCharIndex = 0;
             }
-			selectedLineIndex++;
-            caretCharIndex = 0;
-			
 		}
 
         // Backspace

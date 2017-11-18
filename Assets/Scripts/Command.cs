@@ -16,6 +16,11 @@ public class Command {
         this.lineIndex = lineIndex;
     }
 
+    public void Log()
+    {
+        Debug.Log("Command: " +commandType + " Duration: " + duration);
+    }
+
     public static Command[] CommandsFromLines(List<string> lines)
     {
         Command[] commands = new Command[lines.Count];
@@ -45,25 +50,27 @@ public class Command {
             }
         }
 
-        switch (text[0])
+        if (text.Length > 0)
         {
-            case 'a':
-                t = CommandType.Accelerate;
-                break;
-            case 'b':
-                t = CommandType.Brake;
-                break;
-            case 'l':
-                t = CommandType.Left;
-                break;
-            case 'r':
-                t = CommandType.Right;
-                break;
-            case 'w':
-                t = CommandType.Wait;
-                break;
+            switch (text[0])
+            {
+                case 'a':
+                    t = CommandType.Accelerate;
+                    break;
+                case 'b':
+                    t = CommandType.Brake;
+                    break;
+                case 'l':
+                    t = CommandType.Left;
+                    break;
+                case 'r':
+                    t = CommandType.Right;
+                    break;
+                case 'w':
+                    t = CommandType.Wait;
+                    break;
+            }
         }
-
         float time = ExtractNumberFromText(text);
         return new Command(t, time, lineIndex);
     }
