@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: e69b79f39a440436c94146194b147af5
-timeCreated: 1511022904
+guid: 6812816d983ef48528af63f628c84737
+timeCreated: 1511026914
 licenseType: Pro
 ModelImporter:
   serializedVersion: 22
@@ -15,6 +15,7 @@ ModelImporter:
     100014: Cube_006
     100016: Landscape_002
     100018: //RootNode
+    100020: Suzanne
     400000: Collision_mesh
     400002: Cube
     400004: Cube_001
@@ -25,6 +26,7 @@ ModelImporter:
     400014: Cube_006
     400016: Landscape_002
     400018: //RootNode
+    400020: Suzanne
     2300000: Collision_mesh
     2300002: Cube
     2300004: Cube_001
@@ -34,6 +36,7 @@ ModelImporter:
     2300012: Cube_005
     2300014: Cube_006
     2300016: Landscape_002
+    2300018: Suzanne
     3300000: Collision_mesh
     3300002: Cube
     3300004: Cube_001
@@ -43,6 +46,7 @@ ModelImporter:
     3300012: Cube_005
     3300014: Cube_006
     3300016: Landscape_002
+    3300018: Suzanne
     4300000: Collision_mesh
     4300002: Landscape_002
     4300004: Cube_006
@@ -52,6 +56,7 @@ ModelImporter:
     4300012: Cube_002
     4300014: Cube_001
     4300016: Cube
+    4300018: Suzanne
     7400000: Default Take
     9500000: //RootNode
   externalObjects:
