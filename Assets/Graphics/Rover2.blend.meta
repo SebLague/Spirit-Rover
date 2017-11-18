@@ -1,0 +1,276 @@
+fileFormatVersion: 2
+guid: f0cb1dbddce694393bde0ab7c341d9d8
+timeCreated: 1511010535
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Circle
+    100002: Circle_001
+    100004: Circle_006
+    100006: Cube
+    100008: Cube_001
+    100010: Cube_002
+    100012: Cube_003
+    100014: Large_misc
+    100016: Panels
+    100018: //RootNode
+    100020: Small_misc
+    100022: Wheel_back_L
+    100024: Wheel_back_R
+    100026: wheel_connect_back_L
+    100028: wheel_connect_back_R
+    100030: wheel_connect_front_L
+    100032: wheel_connect_front_R
+    100034: wheel_connect_mid_L
+    100036: wheel_connect_mid_R
+    100038: Wheel_front_L
+    100040: Wheel_front_R
+    100042: Wheel_mid_L
+    100044: Wheel_mid_R
+    400000: Circle
+    400002: Circle_001
+    400004: Circle_006
+    400006: Cube
+    400008: Cube_001
+    400010: Cube_002
+    400012: Cube_003
+    400014: Large_misc
+    400016: Panels
+    400018: //RootNode
+    400020: Small_misc
+    400022: Wheel_back_L
+    400024: Wheel_back_R
+    400026: wheel_connect_back_L
+    400028: wheel_connect_back_R
+    400030: wheel_connect_front_L
+    400032: wheel_connect_front_R
+    400034: wheel_connect_mid_L
+    400036: wheel_connect_mid_R
+    400038: Wheel_front_L
+    400040: Wheel_front_R
+    400042: Wheel_mid_L
+    400044: Wheel_mid_R
+    2100000: Body
+    2100002: Metal
+    2100004: Tread
+    2100006: Rim
+    2100008: Wheel_inner
+    2100010: Solar
+    2100012: Under_solar
+    2100014: Solar_rim
+    2100016: Anten
+    2100018: Gold
+    2100020: White
+    2100022: Head
+    2300000: Circle
+    2300002: Circle_001
+    2300004: Circle_006
+    2300006: Cube
+    2300008: Cube_001
+    2300010: Cube_002
+    2300012: Cube_003
+    2300014: Large_misc
+    2300016: Panels
+    2300018: //RootNode
+    2300020: Small_misc
+    2300022: Wheel_back_L
+    2300024: Wheel_back_R
+    2300026: wheel_connect_back_L
+    2300028: wheel_connect_back_R
+    2300030: wheel_connect_front_L
+    2300032: wheel_connect_front_R
+    2300034: wheel_connect_mid_L
+    2300036: wheel_connect_mid_R
+    2300038: Wheel_front_L
+    2300040: Wheel_front_R
+    2300042: Wheel_mid_L
+    2300044: Wheel_mid_R
+    3300000: Circle
+    3300002: Circle_001
+    3300004: Circle_006
+    3300006: Cube
+    3300008: Cube_001
+    3300010: Cube_002
+    3300012: Cube_003
+    3300014: Large_misc
+    3300016: Panels
+    3300018: //RootNode
+    3300020: Small_misc
+    3300022: Wheel_back_L
+    3300024: Wheel_back_R
+    3300026: wheel_connect_back_L
+    3300028: wheel_connect_back_R
+    3300030: wheel_connect_front_L
+    3300032: wheel_connect_front_R
+    3300034: wheel_connect_mid_L
+    3300036: wheel_connect_mid_R
+    3300038: Wheel_front_L
+    3300040: Wheel_front_R
+    3300042: Wheel_mid_L
+    3300044: Wheel_mid_R
+    4300000: Body
+    4300002: Cube_002
+    4300004: wheel_connect_back_L
+    4300006: Wheel_back_L
+    4300008: wheel_connect_mid_L
+    4300010: Wheel_mid_L
+    4300012: wheel_connect_front_L
+    4300014: Wheel_front_L
+    4300016: Cube_003
+    4300018: wheel_connect_front_R
+    4300020: Wheel_front_R
+    4300022: wheel_connect_mid_R
+    4300024: Wheel_mid_R
+    4300026: wheel_connect_back_R
+    4300028: Wheel_back_R
+    4300030: Panels
+    4300032: Circle_006
+    4300034: Small_misc
+    4300036: Large_misc
+    4300038: Circle
+    4300040: Circle_001
+    4300042: Cube_001
+    4300044: Cube
+    7400000: Default Take
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Anten
+    second: {fileID: 2100000, guid: 862d2ff17b3c7457683bd53babe47185, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Body
+    second: {fileID: 2100000, guid: 7a16e55b455a948c697ffcd51f6c27ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gold
+    second: {fileID: 2100000, guid: 130e5bc8f85054855a4c2c8b679e13f1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Head
+    second: {fileID: 2100000, guid: b908916ff60b541f99930ba7990f7016, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: 9ef75e4add2804467a41cce35dd1497d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rim
+    second: {fileID: 2100000, guid: d88806f083f6d4d01833ba2d7a6e72e4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Solar
+    second: {fileID: 2100000, guid: 4d20334aea6654d6c97b788393ffb575, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Solar_rim
+    second: {fileID: 2100000, guid: 74ac49a5d89d4417c953e5be28b1ca05, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Tread
+    second: {fileID: 2100000, guid: d25cebb647a444796b3d25917fb0b32e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Under_solar
+    second: {fileID: 2100000, guid: af3f5d029aeca4f4c8a82fc38a9634bc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wheel_inner
+    second: {fileID: 2100000, guid: d9a673627d5ea402ba8ae422f19926a5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: White
+    second: {fileID: 2100000, guid: b382bb47ae6a74c7ea2f5cc51d06bb95, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
