@@ -80,7 +80,7 @@ public class Console : MonoBehaviour {
 
     void Run()
     {
-        FindObjectOfType<Level>().ResetLevel();
+        FindObjectOfType<LevelSpawner>().ResetLevel();
         Command[] commands = Command.CommandsFromLines(lines);
         Rover rover = FindObjectOfType<Rover>();
         rover.SetCommands(commands);

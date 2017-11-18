@@ -1,81 +1,84 @@
 fileFormatVersion: 2
-guid: f0cb1dbddce694393bde0ab7c341d9d8
-timeCreated: 1511010535
+guid: 6934935491fde4b9aba9689a191e721a
+timeCreated: 1511014449
 licenseType: Pro
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Circle
-    100002: Circle_001
-    100004: Circle_006
-    100006: Cube
-    100008: Cube_001
-    100010: Cube_002
-    100012: Cube_003
-    100014: Large_misc
-    100016: Panels
-    100018: //RootNode
-    100020: Small_misc
+    100000: Body
+    100002: Circle
+    100004: Circle_001
+    100006: Collision_mesh
+    100008: Cube
+    100010: Cube_001
+    100012: Cube_002
+    100014: Cube_003
+    100016: Large_misc
+    100018: Panels
+    100020: //RootNode
     100022: Wheel_back_L
     100024: Wheel_back_R
-    100026: wheel_connect_back_L
-    100028: wheel_connect_back_R
-    100030: wheel_connect_front_L
-    100032: wheel_connect_front_R
-    100034: wheel_connect_mid_L
-    100036: wheel_connect_mid_R
-    100038: Wheel_front_L
-    100040: Wheel_front_R
-    100042: Wheel_mid_L
-    100044: Wheel_mid_R
-    400000: Circle
-    400002: Circle_001
-    400004: Circle_006
-    400006: Cube
-    400008: Cube_001
-    400010: Cube_002
-    400012: Cube_003
-    400014: Large_misc
-    400016: Panels
-    400018: //RootNode
-    400020: Small_misc
+    100026: Wheel_collider
+    100028: wheel_connect_back_L
+    100030: wheel_connect_back_R
+    100032: wheel_connect_front_L
+    100034: wheel_connect_front_R
+    100036: wheel_connect_mid_L
+    100038: wheel_connect_mid_R
+    100040: Wheel_front_L
+    100042: Wheel_front_R
+    100044: Wheel_mid_L
+    100046: Wheel_mid_R
+    400000: Body
+    400002: Circle
+    400004: Circle_001
+    400006: Collision_mesh
+    400008: Cube
+    400010: Cube_001
+    400012: Cube_002
+    400014: Cube_003
+    400016: Large_misc
+    400018: Panels
+    400020: //RootNode
     400022: Wheel_back_L
     400024: Wheel_back_R
-    400026: wheel_connect_back_L
-    400028: wheel_connect_back_R
-    400030: wheel_connect_front_L
-    400032: wheel_connect_front_R
-    400034: wheel_connect_mid_L
-    400036: wheel_connect_mid_R
-    400038: Wheel_front_L
-    400040: Wheel_front_R
-    400042: Wheel_mid_L
-    400044: Wheel_mid_R
-    2100000: Body
-    2100002: Metal
-    2100004: Tread
-    2100006: Rim
-    2100008: Wheel_inner
-    2100010: Solar
-    2100012: Under_solar
-    2100014: Solar_rim
-    2100016: Anten
-    2100018: Gold
-    2100020: White
-    2100022: Head
-    2300000: Circle
-    2300002: Circle_001
-    2300004: Circle_006
-    2300006: Cube
-    2300008: Cube_001
-    2300010: Cube_002
-    2300012: Cube_003
-    2300014: Large_misc
-    2300016: Panels
-    2300018: //RootNode
-    2300020: Small_misc
-    2300022: Wheel_back_L
-    2300024: Wheel_back_R
+    400026: Wheel_collider
+    400028: wheel_connect_back_L
+    400030: wheel_connect_back_R
+    400032: wheel_connect_front_L
+    400034: wheel_connect_front_R
+    400036: wheel_connect_mid_L
+    400038: wheel_connect_mid_R
+    400040: Wheel_front_L
+    400042: Wheel_front_R
+    400044: Wheel_mid_L
+    400046: Wheel_mid_R
+    2100000: unnamed
+    2100002: Body
+    2100004: Solar
+    2100006: Under_solar
+    2100008: Solar_rim
+    2100010: Gold
+    2100012: Anten
+    2100014: Metal
+    2100016: White
+    2100018: Head
+    2100020: Tread
+    2100022: Rim
+    2100024: Wheel_inner
+    2300000: Body
+    2300002: Circle
+    2300004: Circle_001
+    2300006: Collision_mesh
+    2300008: Cube
+    2300010: Cube_001
+    2300012: Cube_002
+    2300014: Cube_003
+    2300016: Large_misc
+    2300018: Panels
+    2300020: Wheel_back_L
+    2300022: Wheel_back_R
+    2300024: Wheel_collider
     2300026: wheel_connect_back_L
     2300028: wheel_connect_back_R
     2300030: wheel_connect_front_L
@@ -86,19 +89,19 @@ ModelImporter:
     2300040: Wheel_front_R
     2300042: Wheel_mid_L
     2300044: Wheel_mid_R
-    3300000: Circle
-    3300002: Circle_001
-    3300004: Circle_006
-    3300006: Cube
-    3300008: Cube_001
-    3300010: Cube_002
-    3300012: Cube_003
-    3300014: Large_misc
-    3300016: Panels
-    3300018: //RootNode
-    3300020: Small_misc
-    3300022: Wheel_back_L
-    3300024: Wheel_back_R
+    3300000: Body
+    3300002: Circle
+    3300004: Circle_001
+    3300006: Collision_mesh
+    3300008: Cube
+    3300010: Cube_001
+    3300012: Cube_002
+    3300014: Cube_003
+    3300016: Large_misc
+    3300018: Panels
+    3300020: Wheel_back_L
+    3300022: Wheel_back_R
+    3300024: Wheel_collider
     3300026: wheel_connect_back_L
     3300028: wheel_connect_back_R
     3300030: wheel_connect_front_L
@@ -109,29 +112,29 @@ ModelImporter:
     3300040: Wheel_front_R
     3300042: Wheel_mid_L
     3300044: Wheel_mid_R
-    4300000: Body
-    4300002: Cube_002
-    4300004: wheel_connect_back_L
-    4300006: Wheel_back_L
-    4300008: wheel_connect_mid_L
-    4300010: Wheel_mid_L
-    4300012: wheel_connect_front_L
-    4300014: Wheel_front_L
+    4300000: Collision_mesh
+    4300002: Body
+    4300004: Panels
+    4300006: Large_misc
+    4300008: Circle
+    4300010: Circle_001
+    4300012: Cube_001
+    4300014: Cube
     4300016: Cube_003
-    4300018: wheel_connect_front_R
-    4300020: Wheel_front_R
+    4300018: wheel_connect_back_R
+    4300020: Wheel_back_R
     4300022: wheel_connect_mid_R
     4300024: Wheel_mid_R
-    4300026: wheel_connect_back_R
-    4300028: Wheel_back_R
-    4300030: Panels
-    4300032: Circle_006
-    4300034: Small_misc
-    4300036: Large_misc
-    4300038: Circle
-    4300040: Circle_001
-    4300042: Cube_001
-    4300044: Cube
+    4300026: wheel_connect_front_R
+    4300028: Wheel_front_R
+    4300030: Cube_002
+    4300032: wheel_connect_back_L
+    4300034: Wheel_back_L
+    4300036: wheel_connect_mid_L
+    4300038: Wheel_mid_L
+    4300040: wheel_connect_front_L
+    4300042: Wheel_front_L
+    4300044: Wheel_collider
     7400000: Default Take
     9500000: //RootNode
   externalObjects:
@@ -139,62 +142,67 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Anten
-    second: {fileID: 2100000, guid: 862d2ff17b3c7457683bd53babe47185, type: 2}
+    second: {fileID: 2100000, guid: ab3ab4909348948c483ebdee90330276, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Body
-    second: {fileID: 2100000, guid: 7a16e55b455a948c697ffcd51f6c27ee, type: 2}
+    second: {fileID: 2100000, guid: 1aad40d57e5f34691a73fb62cc8200a9, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Gold
-    second: {fileID: 2100000, guid: 130e5bc8f85054855a4c2c8b679e13f1, type: 2}
+    second: {fileID: 2100000, guid: 78da2f997f7664d108abb3b7eb63ea83, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Head
-    second: {fileID: 2100000, guid: b908916ff60b541f99930ba7990f7016, type: 2}
+    second: {fileID: 2100000, guid: dbd31a1a2aeac41e695930f83a16ef46, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Metal
-    second: {fileID: 2100000, guid: 9ef75e4add2804467a41cce35dd1497d, type: 2}
+    second: {fileID: 2100000, guid: 77d03e1acc7e34793a85f8ec35365b6d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Rim
-    second: {fileID: 2100000, guid: d88806f083f6d4d01833ba2d7a6e72e4, type: 2}
+    second: {fileID: 2100000, guid: 42f3728e75ad242468f3557f484f2a3e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Solar
-    second: {fileID: 2100000, guid: 4d20334aea6654d6c97b788393ffb575, type: 2}
+    second: {fileID: 2100000, guid: 8dc8bc987955b427aab8fdef247eae5c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Solar_rim
-    second: {fileID: 2100000, guid: 74ac49a5d89d4417c953e5be28b1ca05, type: 2}
+    second: {fileID: 2100000, guid: 06f1a000273d746e6be2f5e187ad06d8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Tread
-    second: {fileID: 2100000, guid: d25cebb647a444796b3d25917fb0b32e, type: 2}
+    second: {fileID: 2100000, guid: cf726d5ec52dd48f392d7e1e8798704c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Under_solar
-    second: {fileID: 2100000, guid: af3f5d029aeca4f4c8a82fc38a9634bc, type: 2}
+    second: {fileID: 2100000, guid: 5cbcbb49247064347b92a2cd200064f2, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Wheel_inner
-    second: {fileID: 2100000, guid: d9a673627d5ea402ba8ae422f19926a5, type: 2}
+    second: {fileID: 2100000, guid: cc55623c4baa140da91ee9e450603269, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: White
-    second: {fileID: 2100000, guid: b382bb47ae6a74c7ea2f5cc51d06bb95, type: 2}
+    second: {fileID: 2100000, guid: e695e20332041445a9ee9cbec0051c80, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: unnamed
+    second: {fileID: 2100000, guid: da0bdba03b8ac4f469ced4189dc74ac5, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

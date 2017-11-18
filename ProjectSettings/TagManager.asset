@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Obstacle
+  - Wheel
   layers:
   - Default
   - TransparentFX
@@ -14,8 +15,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Wheel
+  - Collision
   - 
   - 
   - 
