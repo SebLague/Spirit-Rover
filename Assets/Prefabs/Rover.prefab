@@ -11,6 +11,22 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1209216003298730}
   m_IsPrefabParent: 1
+--- !u!1 &1020101913685742
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4042148203092660}
+  - component: {fileID: 96334629254144318}
+  m_Layer: 0
+  m_Name: Trail
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!1 &1028923092732454
 GameObject:
   m_ObjectHideFlags: 1
@@ -620,6 +636,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4042148203092660
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1020101913685742}
+  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: -0, z: -0.299}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4677956987750492}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
 --- !u!4 &4174435322868034
 Transform:
   m_ObjectHideFlags: 1
@@ -838,7 +867,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4677956987750492}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4573177741025908
 Transform:
@@ -922,7 +951,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4677956987750492}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4675315332586722
 Transform:
@@ -963,6 +992,7 @@ Transform:
   m_LocalPosition: {x: 0.3919292, y: 0.12760706, z: -0.45864668}
   m_LocalScale: {x: 1, y: 1, z: 0.99999994}
   m_Children:
+  - {fileID: 4042148203092660}
   - {fileID: 4647034673429144}
   - {fileID: 4551608552195604}
   m_Father: {fileID: 4252081456812468}
@@ -2385,6 +2415,93 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300044, guid: 6934935491fde4b9aba9689a191e721a, type: 3}
+--- !u!96 &96334629254144318
+TrailRenderer:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1020101913685742}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 2100000, guid: af9457b6649104f70ab131d391287105, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Time: 100
+  m_Parameters:
+    serializedVersion: 2
+    widthMultiplier: 0.32
+    widthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    colorGradient:
+      serializedVersion: 2
+      key0: {r: 0.41911763, g: 0.15100561, b: 0.15100561, a: 1}
+      key1: {r: 0.41911763, g: 0.15100561, b: 0.15100561, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    numCornerVertices: 0
+    numCapVertices: 0
+    alignment: 1
+    textureMode: 3
+    generateLightingData: 0
+  m_MinVertexDistance: 0.1
+  m_Autodestruct: 0
 --- !u!114 &114067662968386188
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2396,6 +2513,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b109039dcd9af4f8ca21affaebef3967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tracksPrefab: {fileID: 120344720774804396, guid: 174fd502a6f444f599c9d22e517c518d,
+    type: 2}
   frontOfWheel: {fileID: 4551608552195604}
   mesh: {fileID: 4647034673429144}
   grounded: 0
@@ -2413,6 +2532,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b109039dcd9af4f8ca21affaebef3967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tracksPrefab: {fileID: 120344720774804396, guid: 174fd502a6f444f599c9d22e517c518d,
+    type: 2}
   frontOfWheel: {fileID: 4576833100456248}
   mesh: {fileID: 4867738398459790}
   grounded: 0
@@ -2455,6 +2576,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b109039dcd9af4f8ca21affaebef3967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tracksPrefab: {fileID: 120344720774804396, guid: 174fd502a6f444f599c9d22e517c518d,
+    type: 2}
   frontOfWheel: {fileID: 4316975661144462}
   mesh: {fileID: 4783111154077176}
   grounded: 0
@@ -2472,6 +2595,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b109039dcd9af4f8ca21affaebef3967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tracksPrefab: {fileID: 120344720774804396, guid: 174fd502a6f444f599c9d22e517c518d,
+    type: 2}
   frontOfWheel: {fileID: 4322054279184508}
   mesh: {fileID: 4603678653780232}
   grounded: 0
@@ -2489,6 +2614,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b109039dcd9af4f8ca21affaebef3967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tracksPrefab: {fileID: 120344720774804396, guid: 174fd502a6f444f599c9d22e517c518d,
+    type: 2}
   frontOfWheel: {fileID: 4310926944190214}
   mesh: {fileID: 4215882423821304}
   grounded: 0
@@ -2506,6 +2633,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b109039dcd9af4f8ca21affaebef3967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tracksPrefab: {fileID: 120344720774804396, guid: 174fd502a6f444f599c9d22e517c518d,
+    type: 2}
   frontOfWheel: {fileID: 4443528400619858}
   mesh: {fileID: 4779282218470416}
   grounded: 0

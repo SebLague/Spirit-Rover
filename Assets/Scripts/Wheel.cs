@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Wheel : MonoBehaviour {
 
+	public LineRenderer tracksPrefab;
 	public Transform frontOfWheel;
 	public Transform mesh;
     public bool grounded;
@@ -16,7 +17,9 @@ public class Wheel : MonoBehaviour {
     const float maxDelta = .5f;
     const float returnToNormalSpeed = .5f;
     const float groundedSkin = .1f;
-	const float smoothTime = .1f;
+	const float smoothTime = .2f;
+	const float trackDst = .15f;
+	const float trackRaiseAboveGround = .05f;
 
 	float target;
 	float current;
@@ -24,6 +27,11 @@ public class Wheel : MonoBehaviour {
 
 	float roverSpeed;
 	float circum;
+
+	LineRenderer currentTrack;
+	Vector3 lastTrackPoint;
+	bool lastTrackPointActive;
+	Transform levelT;
 
     private void Start()
     {
@@ -33,6 +41,7 @@ public class Wheel : MonoBehaviour {
         parent = transform.parent;
         initialParentLocalHeight = parent.localPosition.z;
 		circum = 2 * Mathf.PI * radius;
+		levelT = FindObjectOfType<Level> ().transform;
     }
 
 	public void SetSpeed(float s) {
@@ -47,43 +56,61 @@ public class Wheel : MonoBehaviour {
         RaycastHit hit;
         grounded = false;
 
-        if (Physics.Raycast(frontOfWheel.position, -frontOfWheel.forward, out hit, radius,mask))
-        {
-            if (hit.collider != null)
-            {
-                grounded = true;
-                float desiredWheelCentreHeight = hit.point.y + radius;
-                float deltaHeight = desiredWheelCentreHeight - transform.position.y;
-                float targetParentLocalHeight = parent.localPosition.z + deltaHeight;
+		if (Physics.Raycast (frontOfWheel.position, -frontOfWheel.forward, out hit, radius + groundedSkin, mask)) {
+        
+			grounded = true;
 
-                if (targetParentLocalHeight < initialParentLocalHeight)
-                {
+			if (frontOfWheel.position.y - hit.point.y <= radius) {
+				float desiredWheelCentreHeight = hit.point.y + radius;
+				float deltaHeight = desiredWheelCentreHeight - transform.position.y;
+				float targetParentLocalHeight = parent.localPosition.z + deltaHeight;
+
+				if (targetParentLocalHeight < initialParentLocalHeight) {
 					target = initialParentLocalHeight;
-                }
-                else if (targetParentLocalHeight - initialParentLocalHeight > maxDelta)
-                {
+				} else if (targetParentLocalHeight - initialParentLocalHeight > maxDelta) {
 					target = initialParentLocalHeight + maxDelta;
-                }
-                else
-                {
+				} else {
 					target = targetParentLocalHeight;
-                }
-			
-            }
-        }
+				}
+			}
+
+			if (hit.collider.tag == "Soil") {
+				if (lastTrackPointActive) {
+					Vector3 newTrackPoint = hit.point + hit.normal * trackRaiseAboveGround;
+					if (Vector3.Distance (newTrackPoint, lastTrackPoint) >= trackDst) {
+						if (currentTrack == null) {
+							currentTrack = Instantiate<LineRenderer> (tracksPrefab, levelT);
+							currentTrack.transform.eulerAngles = new Vector3 (-90, 0, 0);
+							currentTrack.positionCount = 1;
+							currentTrack.SetPosition (0, lastTrackPoint);
+						}
+						currentTrack.positionCount++;
+						currentTrack.SetPosition (currentTrack.positionCount - 1, newTrackPoint);
+						lastTrackPoint = newTrackPoint;
+					}
+				} else {
+					lastTrackPoint = hit.point + hit.normal * trackRaiseAboveGround;
+					lastTrackPointActive = true;
+				}
+			} else {
+				lastTrackPointActive = false;
+				currentTrack = null;
+			}
+            
+		} else {
+			lastTrackPointActive = false;
+			currentTrack = null;
+		}
 
 		target = Mathf.MoveTowards(target, initialParentLocalHeight, Time.fixedDeltaTime * returnToNormalSpeed);
 		current = Mathf.SmoothDamp (current, target, ref smoothV, smoothTime);
 
 		parent.localPosition = new Vector3(parent.localPosition.x, parent.localPosition.y, current);
 
-        if (!grounded)
-        {
-            if (Physics.Raycast(frontOfWheel.position, -frontOfWheel.forward, radius + groundedSkin,mask))
-            {
-                grounded = true;
-            }
-        }
+
+		if (grounded) {
+
+		}
     }
 
     

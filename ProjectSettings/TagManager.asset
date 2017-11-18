@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Obstacle
   - Wheel
+  - Ground
+  - Soil
   layers:
   - Default
   - TransparentFX

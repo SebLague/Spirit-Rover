@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 64315073655309848}
   m_Layer: 9
   m_Name: Landscape_002
-  m_TagString: Untagged
+  m_TagString: Soil
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
