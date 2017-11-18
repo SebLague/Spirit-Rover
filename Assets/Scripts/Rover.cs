@@ -85,6 +85,7 @@ public class Rover : MonoBehaviour {
         {
 			wheels[i].localEulerAngles = Vector3.forward * wheelAngle;
 			wheelForwardSum += -wheels[i].up;
+			wheelRefs [i].SetSpeed (speed);
             if (wheelRefs[i].grounded)
             {
                 isGrounded = true;

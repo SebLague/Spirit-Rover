@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Wheel : MonoBehaviour {
 
+	public Transform frontOfWheel;
+	public Transform mesh;
     public bool grounded;
     float currHeight;
     public LayerMask mask;
-    Transform frontOfWheel;
     float radius;
     Transform parent;
     float initialParentLocalHeight;
@@ -15,19 +16,34 @@ public class Wheel : MonoBehaviour {
     const float maxDelta = .5f;
     const float returnToNormalSpeed = .5f;
     const float groundedSkin = .1f;
+	const float smoothTime = .1f;
+
+	float target;
+	float current;
+	float smoothV;
+
+	float roverSpeed;
+	float circum;
 
     private void Start()
     {
         //mask = LayerMask.NameToLayer("Collision");
-        frontOfWheel = transform.GetChild(0);
         radius = Mathf.Abs(frontOfWheel.localPosition.y);
 
         parent = transform.parent;
         initialParentLocalHeight = parent.localPosition.z;
+		circum = 2 * Mathf.PI * radius;
     }
+
+	public void SetSpeed(float s) {
+		roverSpeed = s;
+	}
 
     private void FixedUpdate()
     {
+		float moveDst = roverSpeed * Time.fixedDeltaTime;
+		float revolutions = moveDst / circum;
+		mesh.Rotate (Vector3.right, 360*revolutions, Space.Self);
         RaycastHit hit;
         grounded = false;
 
@@ -42,22 +58,24 @@ public class Wheel : MonoBehaviour {
 
                 if (targetParentLocalHeight < initialParentLocalHeight)
                 {
-                    parent.localPosition = new Vector3(parent.localPosition.x, parent.localPosition.y, initialParentLocalHeight);
+					target = initialParentLocalHeight;
                 }
                 else if (targetParentLocalHeight - initialParentLocalHeight > maxDelta)
                 {
-                    parent.localPosition = new Vector3(parent.localPosition.x, parent.localPosition.y, initialParentLocalHeight + maxDelta);
+					target = initialParentLocalHeight + maxDelta;
                 }
                 else
                 {
-                    parent.localPosition = new Vector3(parent.localPosition.x, parent.localPosition.y, targetParentLocalHeight);
+					target = targetParentLocalHeight;
                 }
 			
             }
         }
 
-        float returnToNormal = Mathf.MoveTowards(parent.localPosition.z, initialParentLocalHeight, Time.fixedDeltaTime * returnToNormalSpeed);
-        parent.localPosition = new Vector3(parent.localPosition.x, parent.localPosition.y, returnToNormal);
+		target = Mathf.MoveTowards(target, initialParentLocalHeight, Time.fixedDeltaTime * returnToNormalSpeed);
+		current = Mathf.SmoothDamp (current, target, ref smoothV, smoothTime);
+
+		parent.localPosition = new Vector3(parent.localPosition.x, parent.localPosition.y, current);
 
         if (!grounded)
         {

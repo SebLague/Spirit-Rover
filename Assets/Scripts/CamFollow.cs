@@ -7,6 +7,7 @@ public class CamFollow : MonoBehaviour {
 
 	//public float optimalDistance
 	public Transform lookPos;
+	CinemachineBrain brain;
 	Rover r;
 
 	void Update() {
@@ -17,9 +18,9 @@ public class CamFollow : MonoBehaviour {
 		r = rover;
 		SetLookPos ();
 
-		CinemachineBrain b = GetComponent<CinemachineBrain> ();
-		b.ActiveVirtualCamera.LookAt = lookPos;
-		b.ActiveVirtualCamera.Follow = rover.transform;
+		brain = GetComponent<CinemachineBrain> ();
+		brain.ActiveVirtualCamera.LookAt = lookPos;
+		brain.ActiveVirtualCamera.Follow = rover.transform;
 
 	}
 
