@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Wheel : MonoBehaviour {
 
+	public ParticleSystem dustParticle;
 	public LineRenderer tracksPrefab;
 	public Transform frontOfWheel;
 	public Transform mesh;
@@ -33,6 +34,16 @@ public class Wheel : MonoBehaviour {
 	bool lastTrackPointActive;
 	Transform levelT;
 
+	ParticleSystem.MainModule dustMainMod;
+	ParticleSystem.EmissionModule dustEmmMod;
+
+	float timeNotGrounded;
+	float wheelSpeedMultiplier = 1;
+	float targetWheelSpeedMultiplier = 1;
+	float wheelSpeedMultiplierSmoothV;
+
+	float wheelSlowDownTime;
+
     private void Start()
     {
         //mask = LayerMask.NameToLayer("Collision");
@@ -42,6 +53,13 @@ public class Wheel : MonoBehaviour {
         initialParentLocalHeight = parent.localPosition.z;
 		circum = 2 * Mathf.PI * radius;
 		levelT = FindObjectOfType<Level> ().transform;
+
+		if (dustParticle != null) {
+			dustMainMod = dustParticle.main;
+			dustEmmMod = dustParticle.emission;
+		}
+
+		wheelSlowDownTime = Random.Range (5f, 12f);
     }
 
 	public void SetSpeed(float s) {
@@ -52,13 +70,15 @@ public class Wheel : MonoBehaviour {
     {
 		float moveDst = roverSpeed * Time.fixedDeltaTime;
 		float revolutions = moveDst / circum;
-		mesh.Rotate (Vector3.right, 360*revolutions, Space.Self);
+		mesh.Rotate (Vector3.right, 360*revolutions * wheelSpeedMultiplier, Space.Self);
         RaycastHit hit;
         grounded = false;
+		timeNotGrounded += Time.fixedDeltaTime;
 
 		if (Physics.Raycast (frontOfWheel.position, -frontOfWheel.forward, out hit, radius + groundedSkin, mask)) {
         
 			grounded = true;
+			timeNotGrounded = 0;
 
 			if (frontOfWheel.position.y - hit.point.y <= radius) {
 				float desiredWheelCentreHeight = hit.point.y + radius;
@@ -108,9 +128,15 @@ public class Wheel : MonoBehaviour {
 		parent.localPosition = new Vector3(parent.localPosition.x, parent.localPosition.y, current);
 
 
-		if (grounded) {
-
+		if (dustParticle != null) {
+			dustMainMod.startSpeed = 1+roverSpeed;
+			dustEmmMod.rateOverTime = (grounded)? roverSpeed * 15:0;
 		}
+
+		targetWheelSpeedMultiplier = (timeNotGrounded > 2) ? 0 : 1;
+		float smoothT = (targetWheelSpeedMultiplier>.9f)?.5f:wheelSlowDownTime;
+		wheelSpeedMultiplier = Mathf.SmoothDamp(wheelSpeedMultiplier,targetWheelSpeedMultiplier,ref wheelSpeedMultiplierSmoothV,smoothT);
+
     }
 
     
