@@ -65,6 +65,7 @@ public class Rover : MonoBehaviour {
                 }
             }
             RunCurrentCommand();
+			print (speed);
         }
 
         float targetAngle = transform.eulerAngles.y + wheelAngle;
