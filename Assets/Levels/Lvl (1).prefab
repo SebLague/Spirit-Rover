@@ -64,6 +64,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1205699954383668
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4958196117913040}
+  m_Layer: 0
+  m_Name: Cam start
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1291161236161576
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4222470303028644}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Rover spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -232,7 +247,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4664494443516816}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4164659295842750
 Transform:
@@ -258,7 +273,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4664494443516816}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -143.522, z: 0}
 --- !u!4 &4233966247998890
 Transform:
@@ -297,7 +312,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4664494443516816}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4664494443516816
 Transform:
@@ -309,6 +324,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 4958196117913040}
   - {fileID: 4222470303028644}
   - {fileID: 4073350057128868}
   - {fileID: 4961588561121328}
@@ -368,6 +384,19 @@ Transform:
   m_Father: {fileID: 4961588561121328}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4958196117913040
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1205699954383668}
+  m_LocalRotation: {x: 0.05489444, y: -0.9056336, z: 0.12386021, w: 0.40183708}
+  m_LocalPosition: {x: 28.095486, y: 11.846429, z: 37.188107}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4664494443516816}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4961588561121328
 Transform:
   m_ObjectHideFlags: 1
@@ -386,7 +415,7 @@ Transform:
   - {fileID: 4769402957572864}
   - {fileID: 4304724184402582}
   m_Father: {fileID: 4664494443516816}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23117861160209202
 MeshRenderer:
@@ -939,3 +968,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roverSpawn: {fileID: 4222470303028644}
+  camStart: {fileID: 4958196117913040}

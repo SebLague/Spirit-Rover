@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Rover : MonoBehaviour {
 
+
     public float acceleration = 5;
     public float turnSpeed = 10;
     public float brake = 100;
@@ -11,6 +12,9 @@ public class Rover : MonoBehaviour {
     public float dstToAngle = 2;
     float speed;
     float wheelAngle;
+
+	public Transform camLook;
+	public Transform camFollowPos;
 
     public Transform[] wheels;
     Wheel[] wheelRefs;
@@ -65,7 +69,6 @@ public class Rover : MonoBehaviour {
                 }
             }
             RunCurrentCommand();
-			print (speed);
         }
 
         float targetAngle = transform.eulerAngles.y + wheelAngle;

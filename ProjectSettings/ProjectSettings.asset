@@ -3,7 +3,7 @@
 --- !u!129 &1
 PlayerSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 14
+  serializedVersion: 13
   productGUID: 0872b5fa21f984ac488c95b562a5e7c0
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
@@ -61,7 +61,6 @@ PlayerSettings:
   allowedAutorotateToLandscapeLeft: 1
   useOSAutorotation: 1
   use32BitDisplayBuffer: 1
-  preserveFramebufferAlpha: 0
   disableDepthAndStencilBuffers: 0
   androidBlitType: 0
   defaultIsFullScreen: 1
@@ -90,6 +89,7 @@ PlayerSettings:
   allowFullscreenSwitch: 1
   graphicsJobMode: 0
   macFullscreenMode: 2
+  d3d9FullscreenMode: 1
   d3d11FullscreenMode: 1
   xboxSpeechDB: 0
   xboxEnableHeadOrientation: 0
@@ -99,6 +99,7 @@ PlayerSettings:
   n3dsDisableStereoscopicView: 0
   n3dsEnableSharedListOpt: 1
   n3dsEnableVSync: 0
+  ignoreAlphaClear: 0
   xboxOneResolution: 0
   xboxOneMonoLoggingLevel: 0
   xboxOneLoggingLevel: 1
@@ -125,7 +126,6 @@ PlayerSettings:
   bundleVersion: 1.0
   preloadedAssets: []
   metroInputSource: 0
-  wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
   xboxOneDisableKinectGpuReservation: 0
   xboxOneEnable7thCore: 0
@@ -138,8 +138,6 @@ PlayerSettings:
       useSustainedPerformanceMode: 0
       enableVideoLayer: 0
       useProtectedVideoMemory: 0
-      minimumSupportedHeadTracking: 0
-      maximumSupportedHeadTracking: 0
     hololens:
       depthFormat: 1
   protectGraphicsMemory: 0
@@ -211,8 +209,6 @@ PlayerSettings:
   iOSLaunchScreeniPadFillPct: 100
   iOSLaunchScreeniPadSize: 100
   iOSLaunchScreeniPadCustomXibPath: 
-  iOSUseLaunchScreenStoryboard: 0
-  iOSLaunchScreenCustomStoryboardPath: 
   iOSDeviceRequirements: []
   iOSURLSchemes: []
   iOSBackgroundModes: 0
@@ -224,7 +220,6 @@ PlayerSettings:
   iOSManualSigningProvisioningProfileID: 
   tvOSManualSigningProvisioningProfileID: 
   appleEnableAutomaticSigning: 0
-  clonedFromGUID: 00000000000000000000000000000000
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
@@ -233,7 +228,6 @@ PlayerSettings:
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
   AndroidEnableTango: 0
-  AndroidTangoUsesCamera: 1
   androidEnableBanner: 1
   androidUseLowAccuracyLocation: 0
   m_AndroidBanners:
@@ -254,7 +248,6 @@ PlayerSettings:
     Android: 1
     iPhone: 1
     tvOS: 1
-  m_BuildTargetGroupLightmapEncodingQuality: []
   wiiUTitleID: 0005000011000000
   wiiUGroupID: 00010000
   wiiUCommonSaveSize: 4096
@@ -519,7 +512,22 @@ PlayerSettings:
   webGLUseEmbeddedResources: 0
   webGLUseWasm: 0
   webGLCompressionFormat: 1
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    1: UNITY_POST_PROCESSING_STACK_V1
+    4: UNITY_POST_PROCESSING_STACK_V1
+    7: UNITY_POST_PROCESSING_STACK_V1
+    13: UNITY_POST_PROCESSING_STACK_V1
+    17: UNITY_POST_PROCESSING_STACK_V1
+    18: UNITY_POST_PROCESSING_STACK_V1
+    19: UNITY_POST_PROCESSING_STACK_V1
+    20: UNITY_POST_PROCESSING_STACK_V1
+    21: UNITY_POST_PROCESSING_STACK_V1
+    22: UNITY_POST_PROCESSING_STACK_V1
+    23: UNITY_POST_PROCESSING_STACK_V1
+    24: UNITY_POST_PROCESSING_STACK_V1
+    25: UNITY_POST_PROCESSING_STACK_V1
+    26: UNITY_POST_PROCESSING_STACK_V1
+    27: UNITY_POST_PROCESSING_STACK_V1
   platformArchitecture: {}
   scriptingBackend: {}
   incrementalIl2cppBuild: {}
@@ -573,6 +581,12 @@ PlayerSettings:
   n3dsTitle: GameName
   n3dsProductCode: 
   n3dsApplicationId: 0xFF3FF
+  stvDeviceAddress: 
+  stvProductDescription: 
+  stvProductAuthor: 
+  stvProductAuthorEmail: 
+  stvProductLink: 
+  stvProductCategory: 0
   XboxOneProductId: 
   XboxOneUpdateKey: 
   XboxOneSandboxId: 

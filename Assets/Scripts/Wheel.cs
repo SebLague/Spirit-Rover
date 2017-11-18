@@ -69,7 +69,7 @@ public class Wheel : MonoBehaviour {
     }
 
     
-    private void OnDrawGizmos()
+    private void XXOnDrawGizmos()
     {
         Gizmos.color = (grounded) ? Color.green : Color.red;
         Gizmos.DrawSphere(transform.position, .5f);

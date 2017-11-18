@@ -8,7 +8,7 @@ public class LevelSpawner : MonoBehaviour {
     public Level[] levels;
     public Level currentLevel;
     public int levelIndex;
-    Transform p;
+  
     private void Start()
     {
         ResetLevel();
@@ -31,14 +31,11 @@ public class LevelSpawner : MonoBehaviour {
 		}
 
         currentLevel = Instantiate(levels[i], Vector3.zero, Quaternion.identity, transform);
-        p = currentLevel.roverSpawn;
-        SpawnRover();
-        //Invoke("SpawnRover", 1);
+		Transform roverSpawn = currentLevel.roverSpawn;
+		Rover r = Instantiate(roverPrefab, roverSpawn.position, roverSpawn.rotation, roverSpawn).GetComponent<Rover>();
+		FindObjectOfType<CamFollow> ().SetNewLevel (currentLevel.camStart, r);
     }
 
-    void SpawnRover()
-    {
-        Instantiate(roverPrefab, p.position, p.rotation, p);
-    }
+ 
 
 }

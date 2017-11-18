@@ -5,5 +5,5 @@ using UnityEngine;
 public class Level : MonoBehaviour {
 
     public Transform roverSpawn;
-	
+	public Transform camStart;
 }
