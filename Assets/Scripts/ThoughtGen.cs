@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ThoughtGen : MonoBehaviour {
 
+	const float intialDelayBeforeRandomThoughts = 5;
 	const int numThoughtsBeforeRepeating = 20;
 	const float minTimeBetweenThoughts = 5;
 	const float maxTimeBetweenThoughts = 10;
@@ -28,6 +29,7 @@ public class ThoughtGen : MonoBehaviour {
 
 	ThoughtBubble bubble;
 	Queue<Thought> lastNThoughts = new Queue<Thought>();
+	float nextAllowedRandomThoughtTime;
 
 	void Start() {
 		
@@ -76,7 +78,9 @@ public class ThoughtGen : MonoBehaviour {
 				else if (Rover.instance.isStuck ) {
 					ShowThought(stuckPleas[Random.Range(0,stuckPleas.Length)]);
 				} else {
-					ShowThought (GetRandomThought ());
+					if (Time.time > nextAllowedRandomThoughtTime) {
+						ShowThought (GetRandomThought ());
+					}
 				}
 			}
 		}
@@ -109,6 +113,7 @@ public class ThoughtGen : MonoBehaviour {
 		}
 		isThinking = false;
 		nextThinkTime = Time.time + Random.Range (minTimeBetweenThoughts, maxTimeBetweenThoughts);
+		nextAllowedRandomThoughtTime = nextThinkTime + 3;
 	}
 
 
@@ -128,6 +133,7 @@ public class ThoughtGen : MonoBehaviour {
 
 	void Rover_OnBegin ()
 	{
+		nextAllowedRandomThoughtTime = Time.time + intialDelayBeforeRandomThoughts;
 		hasBegun = true;
 		ClearThought ();
 
