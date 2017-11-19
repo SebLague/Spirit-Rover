@@ -8,7 +8,9 @@ public class LevelSpawner : MonoBehaviour {
     public Level[] levels;
     public Level currentLevel;
     public int levelIndex;
-  
+	Rover rover;
+	public UnityEngine.UI.Text dstRemTxt;
+
     private void Start()
     {
         ResetLevel();
@@ -31,12 +33,24 @@ public class LevelSpawner : MonoBehaviour {
 		}
 
         currentLevel = Instantiate(levels[i], Vector3.zero, Quaternion.identity, transform);
+		currentLevel.enabled = true;
 		Transform roverSpawn = currentLevel.roverSpawn;
-		Rover r = Instantiate(roverPrefab, roverSpawn.position, roverSpawn.rotation, roverSpawn).GetComponent<Rover>();
-		FindObjectOfType<CamFollow> ().SetNewLevel (currentLevel.camStart, r);
-		FindObjectOfType<ThoughtBubble> ().SetHead (r.bubble);
+		rover = Instantiate(roverPrefab, roverSpawn.position, roverSpawn.rotation, roverSpawn).GetComponent<Rover>();
+		FindObjectOfType<CamFollow> ().SetNewLevel (currentLevel.camStart, rover);
+		FindObjectOfType<ThoughtBubble> ().SetHead (rover.bubble);
     }
 
+	void Update() {
+		float dst = currentLevel.GetDstToEnd (new Vector2 (rover.transform.position.x, rover.transform.position.z));
+
+		float dstR = Mathf.RoundToInt (dst * 10) / 10f;
+		//Debug.Log (dst +  "   " + dstR);
+		string dec = string.Format ("{0:0.#}", dstR);
+		if (!dec.Contains (".")) {
+			dec += ".0";
+		}
+		dstRemTxt.text = "Dst remaining: " + dec+ "m";
+	}
  
 
 }

@@ -52,7 +52,8 @@ public class ThoughtBubble : MonoBehaviour {
 	}
 
 	IEnumerator ThoughtProcess(string thought, float duration) {
-		
+		transform.position = cam.position + cam.forward * offset.z + cam.right * offset.x + cam.up * offset.y;
+
 		bool useBigBubble = thought.Length > 16;
 		currentSprites = (useBigBubble) ? largeSprites : smallSprites;
 		r.transform.localScale = Vector3.one * ((useBigBubble) ? largeScale : smallScale);
@@ -65,7 +66,7 @@ public class ThoughtBubble : MonoBehaviour {
 
 		float headBelowBubbleDst = Mathf.Clamp(transform.position.y -roverHead.position.y,0,float.MaxValue);
 		offsetY = Mathf.Lerp (offset.y, minY, headBelowBubbleDst / 6f);
-
+		//Debug.Log (headBelowBubbleDst + "  " + (headBelowBubbleDst / 6f) + "   " + offsetY);
 		float endTime = Time.time + duration;
 
 		foreach (SpriteRenderer dr in dotRenderers) {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Rover : MonoBehaviour {
 
-
+	const float marsGrav = 3.7f;
     public float acceleration = 5;
     public float turnSpeed = 10;
     public float brake = 100;
@@ -57,6 +57,8 @@ public class Rover : MonoBehaviour {
         {
             wheelRefs[i] = wheels[i].GetComponent<Wheel>();
         }
+
+		Physics.gravity = Vector3.down * marsGrav;
     }
 
     private void FixedUpdate()
@@ -140,6 +142,12 @@ public class Rover : MonoBehaviour {
 			isStuck = false;
 		}
     }
+
+	void OnTriggerEnter(Collider c) {
+		if (c.tag == "Finish") {
+			print ("FINIS");
+		}
+	}
 
     void FinishedRunningCommands()
     {
