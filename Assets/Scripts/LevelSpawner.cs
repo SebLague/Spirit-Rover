@@ -13,7 +13,7 @@ public class LevelSpawner : MonoBehaviour {
 
     private void Start()
     {
-        ResetLevel();
+		rover = FindObjectOfType<Rover> ();
     }
 
     public void ResetLevel()

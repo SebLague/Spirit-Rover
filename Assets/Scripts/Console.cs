@@ -21,7 +21,6 @@ public class Console : MonoBehaviour {
     public float blinkTime = .2f;
     public float blinkDelay = 1f;
 	public Transform helpMenu;
-	public Transform map;
 
     float lastBlinkTime;
     float lastKeyTime;
@@ -138,12 +137,6 @@ public class Console : MonoBehaviour {
 				if (OnHelpMenuOpen != null) {
 					OnHelpMenuOpen ();
 				}
-				return true;
-			}
-			if (lineText.Contains ("map") || lineText[lineText.Length-1] == 'm') {
-				lines[lineIndex] = lines[lineIndex].Replace("map", "");
-				lines[lineIndex] = lines[lineIndex].Replace("m", "");
-				map.gameObject.SetActive (!map.gameObject.activeSelf);
 				return true;
 			}
 		}
