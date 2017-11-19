@@ -33,48 +33,37 @@ public class Command {
 
     public static Command CommandFromText(string text, int lineIndex)
     {
-        text = text.Trim();
-        text = text.ToLower();
-
-        CommandType t = CommandType.Ignore; // rover ignores strings that aren't intended as commands; e.g. empty line
-
-        // if cannot parse, but string contains letters
-        // (i.e. is trying to be valid command), then send to rover as 'null command' so can prompt user that it does not understand
-        string commandChars = "abcdefghijklmnopqrstuvwxyz1234567890";
-        foreach (char c in text)
-        {
-            if (commandChars.Contains(c.ToString()))
-            {
-                t = CommandType.Null;
-                break;
-            }
-        }
-
-        if (text.Length > 0)
-        {
-            switch (text[0])
-            {
-                case 'a':
-                    t = CommandType.Accelerate;
-                    break;
-                case 'b':
-                    t = CommandType.Brake;
-                    break;
-                case 'l':
-                    t = CommandType.Left;
-                    break;
-                case 'r':
-                    t = CommandType.Right;
-                    break;
-                case 'w':
-                    t = CommandType.Wait;
-                    break;
-            }
-        }
-        float time = ExtractNumberFromText(text);
-        return new Command(t, time, lineIndex);
-    }
-
+		CommandType t = CommandType.Null; // rover ignores strings that aren't intended as commands; e.g. empty line
+		if (string.IsNullOrEmpty (text)) {
+			t = CommandType.Ignore;
+		}
+		else {
+	        if (text.Length > 0)
+	        {
+	            switch (text[0])
+	            {
+	                case 'a':
+	                    t = CommandType.Accelerate;
+	                    break;
+	                case 'b':
+	                    t = CommandType.Brake;
+	                    break;
+	                case 'l':
+	                    t = CommandType.Left;
+	                    break;
+	                case 'r':
+	                    t = CommandType.Right;
+	                    break;
+	                case 'w':
+	                    t = CommandType.Wait;
+	                    break;
+	            }
+	        }
+	       
+	    }
+		float time = ExtractNumberFromText(text);
+		return new Command(t, time, lineIndex);
+	}
     static float ExtractNumberFromText(string text)
     {
         string legalChars = "1234567890.,";

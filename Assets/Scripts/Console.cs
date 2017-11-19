@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.Linq;
 public class Console : MonoBehaviour {
 
-    const string runString = "run";
-    const string legalChars = "abcdefghijklmnopqrstuvwxyz1234567890 .,/";
+	const string decorativeChars = ":();";
+	const string legalChars = "abcdefghijklmnopqrstuvwxyz1234567890 .," + decorativeChars;
 
     public int maxNumLinesOnScreen = 10;
     public int charLimit = 10;
@@ -15,6 +15,9 @@ public class Console : MonoBehaviour {
 	public Image caret;
     public float blinkTime = .2f;
     public float blinkDelay = 1f;
+	public Transform helpMenu;
+	public Transform map;
+
     float lastBlinkTime;
     float lastKeyTime;
 
@@ -78,24 +81,51 @@ public class Console : MonoBehaviour {
 
 	}
 
-    void Run()
+    void Upload()
     {
+		List<string> simplifiedCommands = lines.Select (x => SimplifyStringToEssentials (x)).ToList ();
+
         FindObjectOfType<LevelSpawner>().ResetLevel();
-        Command[] commands = Command.CommandsFromLines(lines);
+		Command[] commands = Command.CommandsFromLines(simplifiedCommands);
         Rover rover = FindObjectOfType<Rover>();
         rover.SetCommands(commands);
     }
 
+	string SimplifyStringToEssentials(string s) {
+		s = s.Trim ().ToLower ();
+		foreach (char c in decorativeChars) {
+			if (s.Contains(c)) {
+				s = s.Replace(c+"","");
+			}
+		}
+		return s;
+	}
+
     bool OnTextEntered(int lineIndex)
     {
-        string lineText = lines[lineIndex];
-        if (lineText.Contains(runString))
-        {
-            lines[lineIndex] = lines[lineIndex].Replace(runString, "");
-            lines[lineIndex] = lines[lineIndex].Replace("/", "");
-            Run();
-            return true;
-        }
+		string lineText = SimplifyStringToEssentials (lines [lineIndex]);
+		if (lineText.Length > 0) {
+			if (lineText.Contains("upload") || lineText[lineText.Length-1] == 'u')
+	        {
+	            lines[lineIndex] = lines[lineIndex].Replace("upload", "");
+				lines[lineIndex] = lines[lineIndex].Replace("u", "");
+	            Upload();
+	            return true;
+	        }
+			if (lineText.Contains ("help") || lineText[lineText.Length-1] == 'h') {
+				lines[lineIndex] = lines[lineIndex].Replace("help", "");
+				lines[lineIndex] = lines[lineIndex].Replace("h", "");
+				helpMenu.gameObject.SetActive (!helpMenu.gameObject.activeSelf);
+				return true;
+			}
+			if (lineText.Contains ("map") || lineText[lineText.Length-1] == 'm') {
+				lines[lineIndex] = lines[lineIndex].Replace("map", "");
+				lines[lineIndex] = lines[lineIndex].Replace("m", "");
+				map.gameObject.SetActive (!map.gameObject.activeSelf);
+				return true;
+			}
+		}
+
         return false;
     }
 
