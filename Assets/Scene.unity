@@ -287,8 +287,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 202197162}
-  m_LocalRotation: {x: 0.021032609, y: -0.9683439, z: 0.08745766, w: 0.23284952}
-  m_LocalPosition: {x: 29.3219, y: 13.18, z: 46.99944}
+  m_LocalRotation: {x: 0.02332137, y: -0.9677375, z: 0.097651236, w: 0.23109424}
+  m_LocalPosition: {x: 29.197226, y: 13.402053, z: 46.83735}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1302,7 +1302,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 921890954}
-  m_LocalRotation: {x: 0.021032609, y: -0.9683439, z: 0.08745766, w: 0.23284952}
+  m_LocalRotation: {x: 0.02332137, y: -0.9677375, z: 0.097651236, w: 0.23109424}
   m_LocalPosition: {x: 29.3219, y: 13.18, z: 46.99944}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1587,16 +1587,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beginThoughts:
-  - text: Time to roll
+  - text: Time to roll.
     continuation: []
   - text: Allons-y!
     continuation:
     - That's French!
-  - text: Let's rock
+  - text: Let's rock.
     continuation: []
-  - text: I hear you, Earth
-    continuation: []
-  - text: Time to head out
+  - text: I hear you, Earth.
+    continuation:
+    - Does anyone hear me?
+  - text: Time to head out.
     continuation: []
   - text: Instructions received!
     continuation: []
@@ -1606,9 +1607,9 @@ MonoBehaviour:
     continuation: []
   - text: On my way!
     continuation: []
-  - text: Okey-dokey
+  - text: Okey-dokey.
     continuation: []
-  - text: It's my time to shine
+  - text: It's my time to shine...
     continuation: []
   successThoughts: []
   endOfCommandThoughts:
@@ -1736,6 +1737,11 @@ MonoBehaviour:
     - I don't get bored.
     - Or lonely....
     - Oh god. Please take me home.
+  - text: So much variety.
+    continuation:
+    - LOL
+  - text: shiiine on you crazy diamond.
+    continuation: []
   stuckPleas:
   - text: I can't move!
     continuation: []
@@ -1771,8 +1777,12 @@ MonoBehaviour:
     - Pshhhhwwww
     - Pwishhhhhfff
     - I give up.
-  - text: Please help
-    continuation: []
+  - text: Please help!
+    continuation:
+    - Pretty please with a million nondescipt rocks on top?
+  - text: This is really getting me down.
+    continuation:
+    - 
 --- !u!4 &1001515447
 Transform:
   m_ObjectHideFlags: 0

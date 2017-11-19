@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ThoughtGen : MonoBehaviour {
 
-	const int numThoughtsBeforeRepeating = 15;
-	const float minTimeBetweenThoughts = 3;
-	const float maxTimeBetweenThoughts = 6;
+	const int numThoughtsBeforeRepeating = 20;
+	const float minTimeBetweenThoughts = 5;
+	const float maxTimeBetweenThoughts = 10;
 	readonly Vector2 delayBetweenChainedThoughtsMinMax = new Vector2(1,2f);
 
 	public Thought[] beginThoughts;
@@ -131,14 +131,14 @@ public class ThoughtGen : MonoBehaviour {
 		hasBegun = true;
 		ClearThought ();
 
-		float skipChance = 90;
+		float skipChance = 70;
 		if (DontSkip (skipChance)) {
 			ShowThought(beginThoughts[Random.Range(0,beginThoughts.Length)]);
 		}
 	}
 
 	void OnCommandUsed(Command command) {
-		float skipChance = 95;
+		float skipChance = 70;
 		if (DontSkip (skipChance)) {
 			if (command.commandType == Command.CommandType.Accelerate) {
 				ShowThought(accThoughts[Random.Range(0,accThoughts.Length)]);
@@ -153,7 +153,7 @@ public class ThoughtGen : MonoBehaviour {
 	}
 
 	void OnCommandsFinished() {
-		float skipChance = 90;
+		float skipChance = 70;
 		if (DontSkip (skipChance)) {
 			ShowThought(endOfCommandThoughts[Random.Range(0,endOfCommandThoughts.Length)]);
 		}
