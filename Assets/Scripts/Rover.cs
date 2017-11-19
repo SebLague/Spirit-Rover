@@ -15,12 +15,22 @@ public class Rover : MonoBehaviour {
 
 	public Transform camLook;
 	public Transform camFollowPos;
+	public Transform bubble;
 
     public Transform[] wheels;
     Wheel[] wheelRefs;
 
     public static event System.Action<Command> OnCommandRunForFirstTime;
 	public static event System.Action OnCommandsFinished;
+	public static event System.Action OnStuck;
+	public static event System.Action OnTopple;
+	public static event System.Action OnBegin;
+
+	[HideInInspector]
+	public bool isToppled;
+	[HideInInspector]
+	public bool isStuck;
+	float stuckTestTime;
 
     Command[] commands;
     Rigidbody rb;
@@ -31,6 +41,13 @@ public class Rover : MonoBehaviour {
     int commandIndex;
 
     Command currentCommand;
+	Vector3 posOld;
+
+	public static Rover instance;
+
+	void Awake() {
+		instance = this;
+	}
 
     private void Start()
     {
@@ -72,6 +89,13 @@ public class Rover : MonoBehaviour {
             RunCurrentCommand();
         }
 
+		if (!isToppled && transform.up.y < 0) {
+			isToppled = true;
+			if (OnTopple != null) {
+				OnTopple ();
+			}
+		}
+
         float targetAngle = transform.eulerAngles.y + wheelAngle;
 
 		float planeDst = speed * Time.fixedDeltaTime;
@@ -94,12 +118,27 @@ public class Rover : MonoBehaviour {
 		}
 
 		Vector3 wheelForward = wheelForwardSum / wheels.Length;
-
+		posOld = rb.position;
         if (isGrounded)
         {
             rb.MovePosition(rb.position + wheelForward * Time.fixedDeltaTime * speed);
             rb.MoveRotation(Quaternion.Euler(transform.eulerAngles + transform.up * bodyDeltaAngle));
         }
+
+		float expectedMoveDst = speed * Time.fixedDeltaTime;
+		float actualMoveDst = (new Vector2(rb.position.x,rb.position.z)-new Vector2(posOld.x,posOld.z)).magnitude;
+		if (actualMoveDst < expectedMoveDst * .1f) {
+			stuckTestTime += Time.fixedDeltaTime;
+			if (stuckTestTime > 2 && !isStuck && !isToppled) {
+				isStuck = true;
+				if (OnStuck != null) {
+					OnStuck ();
+				}
+			}
+		} else {
+			stuckTestTime = 0;
+			isStuck = false;
+		}
     }
 
     void FinishedRunningCommands()
@@ -142,6 +181,9 @@ public class Rover : MonoBehaviour {
         startTime = Time.fixedTime;
         commandIndex = 0;
         running = true;
+		if (OnBegin != null) {
+			OnBegin ();
+		}
     }
 
   

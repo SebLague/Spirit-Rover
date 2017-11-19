@@ -128,7 +128,7 @@ public class Wheel : MonoBehaviour {
 		RaycastHit hit;
 		if (Physics.Raycast (frontOfWheel.position, -frontOfWheel.forward, out hit, radius + groundedSkin, mask)) {
 			if (frontOfWheel.position.y - hit.point.y <= radius) {
-				float desiredWheelCentreHeight = hit.point.y + radius;
+				float desiredWheelCentreHeight = hit.point.y + radius-.05f;
 				float deltaHeight = desiredWheelCentreHeight - transform.position.y;
 				float targetParentLocalHeight = parent.localPosition.z + deltaHeight;
 

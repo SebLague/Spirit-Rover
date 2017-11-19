@@ -9,7 +9,7 @@ public class BubbleTest : MonoBehaviour {
 	SpriteRenderer r;
 	int i;
 	float nextT;
-
+	bool x;
 	// Use this for initialization
 	void Start () {
 		r = GetComponent<SpriteRenderer> ();
@@ -22,6 +22,14 @@ public class BubbleTest : MonoBehaviour {
 			r.sprite = s [i];
 			i++;
 			i %= s.Length;
+			if (i == 0) {
+				if (x) {
+					r.flipX = !r.flipX;
+				} else {
+					r.flipY = !r.flipY;
+				}
+				x = !x;
+			}
 		}
 	}
 }

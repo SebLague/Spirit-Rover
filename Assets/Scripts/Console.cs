@@ -5,6 +5,9 @@ using UnityEngine.UI;
 using System.Linq;
 public class Console : MonoBehaviour {
 
+	public static event System.Action OnHelpMenuOpen;
+	public static bool helpMenuOpen;
+
 	const string decorativeChars = ":();";
 	const string legalChars = "abcdefghijklmnopqrstuvwxyz1234567890 .," + decorativeChars;
 
@@ -131,6 +134,10 @@ public class Console : MonoBehaviour {
 				lines[lineIndex] = lines[lineIndex].Replace("help", "");
 				lines[lineIndex] = lines[lineIndex].Replace("h", "");
 				helpMenu.gameObject.SetActive (!helpMenu.gameObject.activeSelf);
+				helpMenuOpen = helpMenu.gameObject.activeSelf;
+				if (OnHelpMenuOpen != null) {
+					OnHelpMenuOpen ();
+				}
 				return true;
 			}
 			if (lineText.Contains ("map") || lineText[lineText.Length-1] == 'm') {
