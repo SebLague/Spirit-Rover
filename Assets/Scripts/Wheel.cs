@@ -14,10 +14,10 @@ public class Wheel : MonoBehaviour {
     float radius;
     Transform parent;
     float initialParentLocalHeight;
-
+	public bool isFrontWheel;
     const float maxDelta = .5f;
-    const float returnToNormalSpeed = .5f;
-    const float groundedSkin = .1f;
+    const float returnToNormalSpeed = 1f;
+    const float groundedSkin = .25f;
 	const float smoothTime = .2f;
 	const float trackDst = .15f;
 	const float trackRaiseAboveGround = .05f;
@@ -74,25 +74,14 @@ public class Wheel : MonoBehaviour {
         RaycastHit hit;
         grounded = false;
 		timeNotGrounded += Time.fixedDeltaTime;
+		if (isFrontWheel) {
+			WheelRaise ();
+		}
 
-		if (Physics.Raycast (frontOfWheel.position, -frontOfWheel.forward, out hit, radius + groundedSkin, mask)) {
-        
+		if (Physics.Raycast (transform.position, -transform.forward, out hit, radius + groundedSkin, mask)) {
+
 			grounded = true;
 			timeNotGrounded = 0;
-
-			if (frontOfWheel.position.y - hit.point.y <= radius) {
-				float desiredWheelCentreHeight = hit.point.y + radius;
-				float deltaHeight = desiredWheelCentreHeight - transform.position.y;
-				float targetParentLocalHeight = parent.localPosition.z + deltaHeight;
-
-				if (targetParentLocalHeight < initialParentLocalHeight) {
-					target = initialParentLocalHeight;
-				} else if (targetParentLocalHeight - initialParentLocalHeight > maxDelta) {
-					target = initialParentLocalHeight + maxDelta;
-				} else {
-					target = targetParentLocalHeight;
-				}
-			}
 
 			if (hit.collider.tag == "Soil") {
 				if (lastTrackPointActive) {
@@ -116,16 +105,11 @@ public class Wheel : MonoBehaviour {
 				lastTrackPointActive = false;
 				currentTrack = null;
 			}
-            
+
 		} else {
 			lastTrackPointActive = false;
 			currentTrack = null;
 		}
-
-		target = Mathf.MoveTowards(target, initialParentLocalHeight, Time.fixedDeltaTime * returnToNormalSpeed);
-		current = Mathf.SmoothDamp (current, target, ref smoothV, smoothTime);
-
-		parent.localPosition = new Vector3(parent.localPosition.x, parent.localPosition.y, current);
 
 
 		if (dustParticle != null) {
@@ -139,8 +123,33 @@ public class Wheel : MonoBehaviour {
 
     }
 
+
+	void WheelRaise() {
+		RaycastHit hit;
+		if (Physics.Raycast (frontOfWheel.position, -frontOfWheel.forward, out hit, radius + groundedSkin, mask)) {
+			if (frontOfWheel.position.y - hit.point.y <= radius) {
+				float desiredWheelCentreHeight = hit.point.y + radius;
+				float deltaHeight = desiredWheelCentreHeight - transform.position.y;
+				float targetParentLocalHeight = parent.localPosition.z + deltaHeight;
+
+				if (targetParentLocalHeight < initialParentLocalHeight) {
+					target = initialParentLocalHeight;
+				} else if (targetParentLocalHeight - initialParentLocalHeight > maxDelta) {
+					target = initialParentLocalHeight + maxDelta;
+				} else {
+					target = targetParentLocalHeight;
+				}
+			}
+		} 
+
+		target = Mathf.MoveTowards(target, initialParentLocalHeight, Time.fixedDeltaTime * returnToNormalSpeed);
+		current = Mathf.SmoothDamp (current, target, ref smoothV, smoothTime);
+
+		parent.localPosition = new Vector3(parent.localPosition.x, parent.localPosition.y, current);
+
+	}
     
-    private void XXOnDrawGizmos()
+    private void OnDrawGizmos()
     {
         Gizmos.color = (grounded) ? Color.green : Color.red;
         Gizmos.DrawSphere(transform.position, .5f);

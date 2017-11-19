@@ -19,7 +19,8 @@ public class Rover : MonoBehaviour {
     public Transform[] wheels;
     Wheel[] wheelRefs;
 
-    public event System.Action<Command> OnCommandRunForFirstTime;
+    public static event System.Action<Command> OnCommandRunForFirstTime;
+	public static event System.Action OnCommandsFinished;
 
     Command[] commands;
     Rigidbody rb;
@@ -47,7 +48,7 @@ public class Rover : MonoBehaviour {
         if (running)
         {
 			
-            if (Time.time >= nextCommandTime)
+            if (Time.fixedTime >= nextCommandTime)
             {
                 if (commandIndex < commands.Length)
                 {
@@ -59,7 +60,7 @@ public class Rover : MonoBehaviour {
                         OnCommandRunForFirstTime(currentCommand);
                     }
 
-                    nextCommandTime = Time.time + currentCommand.duration;
+					nextCommandTime = Time.fixedTime + currentCommand.duration;
                     commandIndex++;
                 }
                 else
@@ -73,7 +74,7 @@ public class Rover : MonoBehaviour {
 
         float targetAngle = transform.eulerAngles.y + wheelAngle;
 
-        float planeDst = new Vector2(rb.velocity.x, rb.velocity.z).magnitude;
+		float planeDst = speed * Time.fixedDeltaTime;
         float bodyDeltaAngle = Mathf.Min(planeDst * dstToAngle, Mathf.Abs(wheelAngle)) * Mathf.Sign(wheelAngle);
 
         wheelAngle -= bodyDeltaAngle;
@@ -103,7 +104,9 @@ public class Rover : MonoBehaviour {
 
     void FinishedRunningCommands()
     {
-
+		if (OnCommandsFinished != null) {
+			OnCommandsFinished ();
+		}
     }
 
 	void RunCurrentCommand()
@@ -136,7 +139,7 @@ public class Rover : MonoBehaviour {
     {
         this.commands = commands;
 
-        startTime = Time.time;
+        startTime = Time.fixedTime;
         commandIndex = 0;
         running = true;
     }

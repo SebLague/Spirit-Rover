@@ -2584,6 +2584,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 512
+  isFrontWheel: 0
 --- !u!114 &114069850623617338
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2604,6 +2605,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 512
+  isFrontWheel: 1
 --- !u!114 &114345697465364282
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2616,10 +2618,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 0.5
-  turnSpeed: 30
+  turnSpeed: 20
   brake: 0.5
   maxWheelAngle: 45
-  dstToAngle: 0.3
+  dstToAngle: 20
   camLook: {fileID: 4573177741025908}
   camFollowPos: {fileID: 4174435322868034}
   wheels:
@@ -2649,6 +2651,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 512
+  isFrontWheel: 0
 --- !u!114 &114589765645812686
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2669,6 +2672,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 512
+  isFrontWheel: 0
 --- !u!114 &114601904227206886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2689,6 +2693,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 512
+  isFrontWheel: 0
 --- !u!114 &114762380123437204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2709,6 +2714,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 512
+  isFrontWheel: 1
 --- !u!198 &198217960085476766
 ParticleSystem:
   m_ObjectHideFlags: 1

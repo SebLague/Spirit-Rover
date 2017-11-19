@@ -13,6 +13,8 @@ public class Console : MonoBehaviour {
     public float lineSpacing = 2;
     public Text textTemplate;
 	public Image caret;
+	public Image highlightLine;
+
     public float blinkTime = .2f;
     public float blinkDelay = 1f;
 	public Transform helpMenu;
@@ -48,7 +50,20 @@ public class Console : MonoBehaviour {
         CustomInput.instance.RegisterKey(KeyCode.RightArrow);
         CustomInput.instance.RegisterKey(KeyCode.UpArrow);
         CustomInput.instance.RegisterKey(KeyCode.DownArrow);
+		Rover.OnCommandRunForFirstTime += CommandRunOnRover;
+		Rover.OnCommandsFinished += CommandsFinished;
+		highlightLine.gameObject.SetActive (false);
     }
+
+	void CommandsFinished() {
+		highlightLine.gameObject.SetActive (false);
+	}
+
+	void CommandRunOnRover(Command command) {
+		highlightLine.gameObject.SetActive (true);
+		float y = textFields [command.lineIndex].rectTransform.position.y;
+		highlightLine.rectTransform.position = new Vector3 (highlightLine.rectTransform.position.x, y, highlightLine.rectTransform.position.z);
+	}
 
     void Update () {
        
@@ -144,16 +159,19 @@ public class Console : MonoBehaviour {
             else
             {
                 lastKeyTime = Time.time;
-                if (selectedLineIndex < lines.Count - 1)
-                {
-                    lines.Insert(selectedLineIndex + 1, "");
-                }
-                else
-                {
-                    lines.Add("");
-                }
-                selectedLineIndex++;
-                caretCharIndex = 0;
+				if (lines.Count < maxNumLinesOnScreen) {
+					if (selectedLineIndex < lines.Count - 1) {
+						lines.Insert (selectedLineIndex + 1, "");
+					} else {
+						lines.Add ("");
+					}
+					selectedLineIndex++;
+					caretCharIndex = 0;
+				} else {
+					selectedLineIndex++;
+					selectedLineIndex = Mathf.Clamp (selectedLineIndex, 0, maxNumLinesOnScreen - 1);
+					caretCharIndex = lines [selectedLineIndex].Length;
+				}
             }
 		}
 
