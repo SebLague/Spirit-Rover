@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Rock 4
+  m_Name: Rock 6
   m_Shader: {fileID: 4800000, guid: b0fc76c7408734dfba78b620587e8471, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -43,7 +43,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: e2857ca851199426a8991299d6a7d398, type: 3}
+        m_Texture: {fileID: 2800000, guid: 999eafc05f2704ca5897a5f6cdc47121, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -67,7 +67,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _GroundHeight: 1.86
+    - _GroundHeight: 1.46
     - _GroundTexScale: 6.88
     - _Metallic: 0.13
     - _Mode: 0
@@ -83,4 +83,4 @@ Material:
     - _Color: {r: 0.2794118, g: 0.21777683, b: 0.21777683, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GroundTint: {r: 0.50735295, g: 0.46623987, b: 0.44393384, a: 1}
-    - _Tint: {r: 0.8088235, g: 0.8088235, b: 0.8088235, a: 1}
+    - _Tint: {r: 0.71323526, g: 0.71323526, b: 0.71323526, a: 1}
