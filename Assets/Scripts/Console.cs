@@ -39,6 +39,7 @@ public class Console : MonoBehaviour {
 
     void Awake()
     {
+		
         GenerateTextFields();
         ClearTextFields();
         lines.Add("");
@@ -73,7 +74,8 @@ public class Console : MonoBehaviour {
     void Update () {
        
         // text input
-        string input = Input.inputString;
+		string input = Input.inputString.ToLower();
+		bool enteredString = false;
         foreach (char c in input)
         {
             if (lines[selectedLineIndex].Length >= charLimit)
@@ -82,6 +84,7 @@ public class Console : MonoBehaviour {
             }
             if (legalChars.Contains(c.ToString().ToLower()))
             {
+				enteredString = true;
                 if (caretCharIndex < lines[selectedLineIndex].Length)
                 {
                     lines[selectedLineIndex] = lines[selectedLineIndex].Insert(caretCharIndex, c.ToString());
@@ -94,6 +97,10 @@ public class Console : MonoBehaviour {
                 lastKeyTime = Time.time;
             }
         }
+
+		if (enteredString) {
+			AudioM.PlayKeyPress (false);
+		}
 
         HandleControlInput();
 
@@ -125,10 +132,11 @@ public class Console : MonoBehaviour {
     {
 		string lineText = SimplifyStringToEssentials (lines [lineIndex]);
 		if (lineText.Length > 0) {
-			if (lineText.Contains("upload") || lineText[lineText.Length-1] == 'u')
+			if (lineText.Contains("upload") || lineText[lineText.Length-1] == 'u' || lineText.Contains("up"))
 	        {
 	            lines[lineIndex] = lines[lineIndex].Replace("upload", "");
 				lines[lineIndex] = lines[lineIndex].Replace("u", "");
+				lines[lineIndex] = lines[lineIndex].Replace("up", "");
 	            Upload();
 	            return true;
 	        }
@@ -140,6 +148,18 @@ public class Console : MonoBehaviour {
 				if (OnHelpMenuOpen != null) {
 					OnHelpMenuOpen ();
 				}
+				return true;
+			}
+
+			if (lineText.Contains ("quit") ||lineText.Contains ("exit")) {
+				lines[lineIndex] = lines[lineIndex].Replace("quit", "");
+				lines[lineIndex] = lines[lineIndex].Replace("exit", "");
+				Application.Quit ();
+				return true;
+			}
+			if (lineText.Contains ("mute")) {
+				lines[lineIndex] = lines[lineIndex].Replace("mute", "");
+				FindObjectOfType<AudioListener> ().enabled = !FindObjectOfType<AudioListener> ().enabled;
 				return true;
 			}
 		}
@@ -154,6 +174,7 @@ public class Console : MonoBehaviour {
         // New line
 		if (Input.GetKeyDown(KeyCode.Return))
 		{
+			AudioM.PlayKeyPress (true);
             bool specialCommandEntered = OnTextEntered(selectedLineIndex);
             if (specialCommandEntered)
             {
@@ -181,6 +202,7 @@ public class Console : MonoBehaviour {
         // Backspace
         if (CustomInput.instance.GetKeyPress(KeyCode.Backspace))
         {
+			
 			lastKeyTime = Time.time;
             if (lines[selectedLineIndex].Length == 0)
             {
@@ -191,6 +213,7 @@ public class Console : MonoBehaviour {
                     {
                         selectedLineIndex--;
                         caretCharIndex = lines[selectedLineIndex].Length;
+						AudioM.PlayKeyPress (false);
                     }
                 }
             }
@@ -198,15 +221,19 @@ public class Console : MonoBehaviour {
             {
                 if (caretCharIndex > 0)
                 {
+					AudioM.PlayKeyPress (false);
                     caretCharIndex--;
                     lines[selectedLineIndex] = lines[selectedLineIndex].Remove(caretCharIndex, 1);
                 }
             }
         }
 
+		int lineIndexOld = selectedLineIndex;
+		int charIndOld = caretCharIndex;
         // Arrow keys
 		if (CustomInput.instance.GetKeyPress(KeyCode.UpArrow))
 		{
+			
 			lastKeyTime = Time.time;
             if (shift)
             {
@@ -258,6 +285,10 @@ public class Console : MonoBehaviour {
                 caretCharIndex = Mathf.Clamp(caretCharIndex + 1, 0, Mathf.Max(0, lines[selectedLineIndex].Length));
             }
 		}
+
+		if (selectedLineIndex != lineIndexOld || caretCharIndex != charIndOld) {
+			AudioM.PlayKeyPress (false);
+		}
     }
 
     void UpdateDisplay()
@@ -270,6 +301,11 @@ public class Console : MonoBehaviour {
         {
             firstDisplayedLineIndex = selectedLineIndex - maxNumLinesOnScreen+1;
         }
+
+		for (int i = 0; i < textFields.Length; i++)
+		{
+			textFields [i].text = "";
+		}
 
         for (int i = 0; i < textFields.Length; i++)
         {

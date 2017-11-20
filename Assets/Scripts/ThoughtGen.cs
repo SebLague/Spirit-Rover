@@ -22,6 +22,7 @@ public class ThoughtGen : MonoBehaviour {
 	public Thought[] randomThoughts;
 	public Thought[] stuckPleas;
 	public Thought[] toppledPleas;
+	int sRC;
 
 	bool hasBegun;
 	Coroutine trainOfThought;
@@ -98,6 +99,7 @@ public class ThoughtGen : MonoBehaviour {
 	}
 
 	IEnumerator TrainOfThought(Thought thought) {
+		sRC++;
 		isThinking = true;
 		string[] allTexts = new string[]{ thought.text };
 		if (thought.continuation != null && thought.continuation.Length >0) {
@@ -129,6 +131,11 @@ public class ThoughtGen : MonoBehaviour {
 		for (int i = 0; i < randomThoughts.Length; i++) {
 			
 			Thought r = randomThoughts [(randInd+i)%randomThoughts.Length];
+			if (r.text.ToLower ().Contains ("do i have to write")) {
+				if (sRC < 30) {
+					continue;
+				}
+			}
 			if (!lastNThoughts.Contains(r)) {
 				return r;
 			}

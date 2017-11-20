@@ -12,7 +12,7 @@ public class Rover : MonoBehaviour {
     public float dstToAngle = 2;
     float speed;
     float wheelAngle;
-
+	AudioSource audio;
 	public Transform camLook;
 	public Transform camFollowPos;
 	public Transform bubble;
@@ -47,6 +47,7 @@ public class Rover : MonoBehaviour {
     Command currentCommand;
 	Vector3 posOld;
 	Vector3 forwardOnTopple;
+	float smoothVolV;
 
 	public static Rover instance;
 
@@ -63,6 +64,8 @@ public class Rover : MonoBehaviour {
             wheelRefs[i] = wheels[i].GetComponent<Wheel>();
         }
 		camFollowLocalPos = camFollowPos.localPosition;
+		audio = GetComponent<AudioSource> ();
+		audio.volume = 0;
 		Physics.gravity = Vector3.down * marsGrav;
     }
 
@@ -141,6 +144,7 @@ public class Rover : MonoBehaviour {
 
 		float expectedMoveDst = speed * Time.fixedDeltaTime;
 		float actualMoveDst = (new Vector2(rb.position.x,rb.position.z)-new Vector2(posOld.x,posOld.z)).magnitude;
+
 		if (actualMoveDst < expectedMoveDst * .1f) {
 			stuckTestTime += Time.fixedDeltaTime;
 			if (stuckTestTime > 2 && !isStuck && !isToppled) {
@@ -153,7 +157,13 @@ public class Rover : MonoBehaviour {
 			stuckTestTime = 0;
 			isStuck = false;
 		}
+
+		float actualMoveSpeed = actualMoveDst / Time.fixedDeltaTime;
+		float targetVolume =  Mathf.Lerp (0, .2f, actualMoveSpeed / 3f);;
+		audio.volume = Mathf.SmoothDamp (audio.volume, targetVolume, ref smoothVolV, 8);
     }
+
+
 
 	void OnTriggerEnter(Collider c) {
 		if (c.tag == "Finish") {
