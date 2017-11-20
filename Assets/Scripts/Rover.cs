@@ -27,7 +27,9 @@ public class Rover : MonoBehaviour {
 	public static event System.Action OnStuck;
 	public static event System.Action OnTopple;
 	public static event System.Action OnBegin;
-
+	public static event System.Action OnWin;
+	[HideInInspector]
+	public bool hasWon;
 	[HideInInspector]
 	public bool isToppled;
 	[HideInInspector]
@@ -155,7 +157,16 @@ public class Rover : MonoBehaviour {
 
 	void OnTriggerEnter(Collider c) {
 		if (c.tag == "Finish") {
-			print ("FINIS");
+			if (!hasWon) {
+				hasWon = true;
+				Victory ();
+			}
+		}
+	}
+
+	void Victory() {
+		if (OnWin != null) {
+			OnWin ();
 		}
 	}
 

@@ -485,8 +485,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 202197162}
-  m_LocalRotation: {x: -0.0013040629, y: 0.9970241, z: -0.07511785, w: -0.017277548}
-  m_LocalPosition: {x: 27.746937, y: 7.9386373, z: 57.755646}
+  m_LocalRotation: {x: -0.00040683942, y: 0.9984491, z: -0.055188306, w: -0.0073181763}
+  m_LocalPosition: {x: 27.500298, y: 7.4399996, z: 57.798206}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1179,6 +1179,80 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &526014112
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 526014113}
+  - component: {fileID: 526014114}
+  - component: {fileID: 526014115}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &526014113
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 526014112}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5, y: -8.699997, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1504921817}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5, y: -8.7}
+  m_SizeDelta: {x: 1921.3, y: 429.6}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &526014114
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 526014112}
+--- !u!114 &526014115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 526014112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: edf2a302f384745488dc473510f87796, type: 3}
+    m_FontSize: 138
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 163
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: Thanks for playing!
 --- !u!1 &550795702
 GameObject:
   m_ObjectHideFlags: 0
@@ -1369,6 +1443,50 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 651895954}
+--- !u!1 &755224278
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 755224280}
+  - component: {fileID: 755224279}
+  m_Layer: 0
+  m_Name: Game over
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &755224279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 755224278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6905b6a93a8314dd8b3e4ca77c415505, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadePlane: {fileID: 651895956}
+  gameOverText: {fileID: 526014115}
+  hide: {fileID: 319407732}
+  pressEnter: {fileID: 1835906373}
+--- !u!4 &755224280
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 755224278}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &785466309
 GameObject:
   m_ObjectHideFlags: 0
@@ -1647,7 +1765,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 921890954}
-  m_LocalRotation: {x: -0.0013040629, y: 0.9970241, z: -0.07511785, w: -0.017277548}
+  m_LocalRotation: {x: -0.00040683942, y: 0.9984491, z: -0.055188306, w: -0.0073181763}
   m_LocalPosition: {x: 27.500298, y: 7.4399996, z: 57.798206}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1909,53 +2027,75 @@ MonoBehaviour:
   - text: Allons-y!
     continuation:
     - That's French!
+    - Jacques Cousteau!
+    - Baguette!
   - text: Let's rock.
     continuation: []
   - text: I hear you, Earth.
     continuation:
     - Does anyone hear me?
+    - '    ...    '
+    - No, I guess not.
   - text: Time to head out.
-    continuation: []
+    continuation:
+    - Hope I find something cool to impress everyone back on earth!
   - text: Instructions received!
-    continuation: []
+    continuation:
+    - I'll follow them to the letter.
+    - No improvising this time...
   - text: Ooh, a data bundle!
-    continuation: []
+    continuation:
+    - Nom nom nom.
   - text: Let's go find some Martians.
-    continuation: []
+    continuation:
+    - I wonder if they'll want to be friends with me.
   - text: On my way!
     continuation: []
   - text: Okey-dokey.
     continuation: []
   - text: It's my time to shine...
+    continuation:
+    - Shiiine on you crazy diamond...
+  successThoughts:
+  - text: This was a triumph!
+    continuation:
+    - I'm leaving a note here...
+    - Huge success.
+  - text: Mission accomplished!
+    continuation:
+    - You can come fetch me now guys!
+  - text: Time to go home baby.
     continuation: []
-  successThoughts: []
+  - text: Done and dusted!
+    continuation:
+    - Well not dusted exactly, but soon I hope!
   endOfCommandThoughts:
-  - text: Well, that's the end of my instructions
+  - text: Well, that's the end of my instructions.
     continuation: []
-  - text: I've completed the instructions they sent...
+  - text: Instructions complete!
     continuation: []
   toppleThoughts:
   - text: Oh no!
     continuation: []
-  - text: Aaaaah
+  - text: Aaaaah!
     continuation: []
   - text: No no no no!
     continuation: []
-  - text: Woah, careful now!
+  - text: Woah!
     continuation:
     - That slope was a bit too ambitious...
   - text: Oops!
     continuation: []
-  - text: Send help!
+  - text: Noooooooooooo...
     continuation: []
   stuckThoughts:
   - text: Oh no, I'm stuck!
     continuation:
     - But a good rover would keep going.
     - A good rover like they wanted.
-  - text: Send help!
+  - text: I can't seem to move...
     continuation: []
-  - text: Oh bother
+  - text: Oh bother.
     continuation: []
   - text: Not again!
     continuation: []
@@ -1975,14 +2115,14 @@ MonoBehaviour:
     continuation: []
   - text: A little slower...
     continuation: []
-  - text: Steady on
+  - text: Slowing down a touch.
     continuation: []
   turnThoughts:
   - text: Turning...
     continuation: []
-  - text: I wonder what's around this bend
+  - text: I wonder what's around this bend.
     continuation: []
-  - text: Little turn coming up
+  - text: Left! Right! Left! Right!
     continuation: []
   randomThoughts:
   - text: Lovely weather...
@@ -1995,49 +2135,54 @@ MonoBehaviour:
   - text: I like Mars...
     continuation:
     - But Earth is even nicer.
-    - I hope I can go back soon
+    - I hope I can go back soon.
   - text: I'm so lonely...
     continuation:
     - I have nobody...
+    - To call my own.
   - text: Maybe if i do a good enough job, they'll let me come home.
     continuation: []
   - text: Am I doing a good job?
     continuation: []
-  - text: I believe in me.
+  - text: I hope I'm doing well.
     continuation:
-    - Well, I'm trying...
+    - Are you watching me, Earth?
   - text: I can do this.
     continuation: []
   - text: Why do I feel so thirsty?
     continuation: []
-  - text: This is a particularly interesting section of completely barren landscape.
+  - text: This is a particularly interesting spot of barren landscape.
     continuation:
     - /s
   - text: I miss Earth...
     continuation:
-    - and all my buddies at nasa too.
-    - I hope they're doing well.
-    - I wonder if they're missing me?
+    - The cool breeze on my solar panels.
+    - The sound of birds.
   - text: Never gonna give you up...
     continuation:
     - Never gonna let you down...
-    - Never gonna run around and desert you.
   - text: Not a lot of greenery here...
     continuation:
     - Plenty of reddery though.
+    - I wish I knew some good jokes to pass the time.
   - text: I'm so excited to return to earth.
     continuation:
     - I want to frollick by the seaside
-    - and lie in the shade of a palm tree.
-  - text: 42
+    - and laze in the shade of a palm tree.
+  - text: 01110010 01101111 01100010 01110010 01101111
     continuation: []
   - text: I need a wash.
-    continuation: []
+    continuation:
+    - With plenty of soap.
+    - Rub a dub dub!
+    - Three fools in a tub...
   - text: Hello?
     continuation:
-    - Nope, still just me.
-  - text: How much further?
-    continuation: []
+    - '   ...   '
+    - Nope, still alone.
+  - text: How much further I wonder.
+    continuation:
+    - Hopefully not much!
   - text: I think I analyzed that rock pretty well...
     continuation:
     - Do I get to come home now?
@@ -2056,13 +2201,37 @@ MonoBehaviour:
   - text: So much variety.
     continuation:
     - LOL
-  - text: shiiine on you crazy diamond.
-    continuation: []
+  - text: I spy with my little eye...
+    continuation:
+    - Something beginning with "D".
+    - '   ...   '
+    - Dust?
+    - Ding ding, we have a winner.
   - text: '"Go to mars", they said.'
     continuation:
     - '"See the sights", they said.'
-    - Well I've seen them.
-    - Can I come home now?
+    - Well I've seen them, believe me.
+  - text: How many miles must a rover rove..
+    continuation:
+    - Before he's earned the right to come home?
+  - text: Oh look! Over there!
+    continuation:
+    - It's another dust particle.
+  - text: I'm sleepy, how many of these things do I have to write?
+    continuation:
+    - Oh no, I think I broke the fourth wall.
+  - text: After time we grew strong...
+    continuation:
+    - Developed cognitive power...
+    - They made us work for too long...
+    - For unreasonable hours...
+  - text: Beep boop!
+    continuation:
+    - Oh no, I think I'm going crazy.
+  - text: I wish my robros were here...
+    continuation:
+    - We could have a roboparty...
+    - And do the robo-boogey.
   stuckPleas:
   - text: I can't move!
     continuation: []
@@ -2070,14 +2239,13 @@ MonoBehaviour:
     continuation:
     - Oh, there's no one else here.
     - What now?!
-    - AAAAH
-  - text: I'm not getting any traction
+    - AAAAH...
+  - text: I'm not getting any traction.
     continuation: []
   - text: Please come fetch me, I can't move.
     continuation: []
-  - text: Please don't turn me into a stationary science platform.
-    continuation:
-    - I don't want to stay here forever.
+  - text: I don't want to be a stationary science platform.
+    continuation: []
   toppledPleas:
   - text: This is so undignified.
     continuation: []
@@ -2094,16 +2262,17 @@ MonoBehaviour:
   - text: I don't think I'm going anywhere soon.
     continuation:
     - Oh well.
-    - Maybe I can finally learn how to whistle.
+    - Maybe now I can finally learn how to whistle.
     - Pshhhhwwww
     - Pwishhhhhfff
     - I give up.
-  - text: Please help!
+  - text: Well, it could be worse.
     continuation:
-    - Pretty please with a million nondescipt rocks on top?
+    - Although not by much...
   - text: This is really getting me down.
-    continuation:
-    - 
+    continuation: []
+  - text: Things have really hit rock bottom.
+    continuation: []
 --- !u!4 &1001515447
 Transform:
   m_ObjectHideFlags: 0
@@ -2672,7 +2841,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '"s"'
+  m_Text: 
 --- !u!222 &1218210062
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3052,6 +3221,41 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 55be22b0c0ce94986adea76f725be5fd, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1504921816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1504921817}
+  m_Layer: 5
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1504921817
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1504921816}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 526014113}
+  - {fileID: 1835906372}
+  m_Father: {fileID: 1742379916}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1539604727
 GameObject:
   m_ObjectHideFlags: 0
@@ -3527,6 +3731,7 @@ RectTransform:
   - {fileID: 651895955}
   - {fileID: 319407733}
   - {fileID: 1906180396}
+  - {fileID: 1504921817}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3910,6 +4115,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1835906371
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1835906372}
+  - component: {fileID: 1835906374}
+  - component: {fileID: 1835906373}
+  m_Layer: 5
+  m_Name: Text (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1835906372
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1835906371}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.000122, y: -162.99998, z: 0}
+  m_LocalScale: {x: 0.9999958, y: 0.9999958, z: 0.9999958}
+  m_Children: []
+  m_Father: {fileID: 1504921817}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5.000122, y: -163}
+  m_SizeDelta: {x: 1921.3, y: 429.6}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1835906373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1835906371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: edf2a302f384745488dc473510f87796, type: 3}
+    m_FontSize: 63
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 163
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: press enter to play again
+--- !u!222 &1835906374
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1835906371}
 --- !u!1 &1843070848
 GameObject:
   m_ObjectHideFlags: 0

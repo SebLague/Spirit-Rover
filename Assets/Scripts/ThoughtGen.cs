@@ -6,8 +6,9 @@ public class ThoughtGen : MonoBehaviour {
 
 	const float intialDelayBeforeRandomThoughts = 5;
 	const int numThoughtsBeforeRepeating = 20;
-	const float minTimeBetweenThoughts = 6;
-	const float maxTimeBetweenThoughts = 15;
+	const float timeBetweenThoughts = 3;
+	const float minTimeBetweenRandomThoughts = 5;
+	const float maxTimeBetweenRandomThoughts = 15;
 	readonly Vector2 delayBetweenChainedThoughtsMinMax = new Vector2(1,2f);
 
 	public Thought[] beginThoughts;
@@ -40,6 +41,7 @@ public class ThoughtGen : MonoBehaviour {
 		Rover.OnStuck += OnStuck;
 		Rover.OnTopple += OnTopple;
 		Rover.OnBegin += Rover_OnBegin;
+		Rover.OnWin += OnWin;
 		Console.OnHelpMenuOpen += ClearThought ;
 
 	}
@@ -74,6 +76,9 @@ public class ThoughtGen : MonoBehaviour {
 	void Update() {
 		if (hasBegun) {
 			if (HappyForNewThought ()) {
+				if (Rover.instance.hasWon) {
+					ShowThought(successThoughts[Random.Range(0,successThoughts.Length)]);
+				}
 				if (Rover.instance.isToppled) {
 					ShowThought(toppledPleas[Random.Range(0,toppledPleas.Length)]);
 				}
@@ -114,8 +119,8 @@ public class ThoughtGen : MonoBehaviour {
 			yield return new WaitForSeconds (duration + delay);
 		}
 		isThinking = false;
-		nextThinkTime = Time.time + Random.Range (minTimeBetweenThoughts, maxTimeBetweenThoughts);
-		nextAllowedRandomThoughtTime = nextThinkTime + 3;
+		nextThinkTime = Time.time + timeBetweenThoughts;
+		nextAllowedRandomThoughtTime = Time.time + Random.Range (minTimeBetweenRandomThoughts, maxTimeBetweenRandomThoughts);
 	}
 
 
@@ -140,15 +145,16 @@ public class ThoughtGen : MonoBehaviour {
 		hasBegun = true;
 		ClearThought ();
 
-		float skipChance = 70;
+		float skipChance = 0;
 		if (DontSkip (skipChance)) {
+			//Debug.Log ("Start thought");
 			ShowThought(beginThoughts[Random.Range(0,beginThoughts.Length)]);
 		}
 	}
 
 	void OnCommandUsed(Command command) {
 		if (Time.time - roverBeginTime > 5) {
-			float skipChance = 70;
+			float skipChance = 10;
 			if (DontSkip (skipChance)) {
 				if (command.commandType == Command.CommandType.Accelerate) {
 					ShowThought (accThoughts [Random.Range (0, accThoughts.Length)]);
@@ -162,10 +168,14 @@ public class ThoughtGen : MonoBehaviour {
 	}
 
 	void OnCommandsFinished() {
-		float skipChance = 70;
+		float skipChance = 0;
 		if (DontSkip (skipChance)) {
 			ShowThought(endOfCommandThoughts[Random.Range(0,endOfCommandThoughts.Length)]);
 		}
+	}
+
+	void OnWin() {
+		ShowThought (successThoughts [Random.Range (0,successThoughts.Length)],true);
 	}
 
 	void OnStuck() {

@@ -101,7 +101,7 @@ public class Console : MonoBehaviour {
 
 	}
 
-    void Upload()
+    public void Upload()
     {
 		List<string> simplifiedCommands = lines.Select (x => SimplifyStringToEssentials (x)).ToList ();
 

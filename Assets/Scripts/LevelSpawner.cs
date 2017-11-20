@@ -42,8 +42,11 @@ public class LevelSpawner : MonoBehaviour {
 
 	void Update() {
 		float dst = currentLevel.GetDstToEnd (new Vector2 (rover.transform.position.x, rover.transform.position.z));
-
+		if (rover.hasWon) {
+			dst = 0;
+		}
 		float dstR = Mathf.RoundToInt (dst * 10) / 10f;
+
 		//Debug.Log (dst +  "   " + dstR);
 		string dec = string.Format ("{0:0.#}", dstR);
 		if (!dec.Contains (".")) {
