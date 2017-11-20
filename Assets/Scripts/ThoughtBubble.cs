@@ -68,7 +68,7 @@ public class ThoughtBubble : MonoBehaviour {
 
 		//float headBelowBubbleDst = Mathf.Clamp(transform.position.y -roverHead.position.y,0,float.MaxValue);
 		//offsetY = Mathf.Lerp (offset.y, minY, headBelowBubbleDst / 6f);
-		offsetY = rover.isToppled?minY:offset.y;
+
 		//Debug.Log (headBelowBubbleDst + "  " + (headBelowBubbleDst / 6f) + "   " + offsetY);
 		float endTime = Time.time + duration;
 
@@ -77,8 +77,8 @@ public class ThoughtBubble : MonoBehaviour {
 		}
 
 		while (Time.time < endTime) {
-			transform.position = cam.position + cam.forward * offset.z + cam.right * offset.x + cam.up * offsetY;
-			transform.LookAt (cam.position);
+			transform.position = cam.position + cam.forward * offset.z + cam.right * offset.x + cam.up * offset.y;
+			transform.LookAt (cam.position,cam.up);
 
 			dotRenderers [0].transform.position = roverHead.position + cam.up * .5f + cam.right * .5f;
 			dotRenderers [dotRenderers.Length-1].transform.position = (useBigBubble) ? dotConnectBig.position : dotConnectSmall.position;

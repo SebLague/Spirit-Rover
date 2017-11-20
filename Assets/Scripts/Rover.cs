@@ -20,6 +20,7 @@ public class Rover : MonoBehaviour {
 
     public Transform[] wheels;
     Wheel[] wheelRefs;
+	Vector3 camFollowLocalPos;
 
     public static event System.Action<Command> OnCommandRunForFirstTime;
 	public static event System.Action OnCommandsFinished;
@@ -43,6 +44,7 @@ public class Rover : MonoBehaviour {
 
     Command currentCommand;
 	Vector3 posOld;
+	Vector3 forwardOnTopple;
 
 	public static Rover instance;
 
@@ -58,7 +60,7 @@ public class Rover : MonoBehaviour {
         {
             wheelRefs[i] = wheels[i].GetComponent<Wheel>();
         }
-
+		camFollowLocalPos = camFollowPos.localPosition;
 		Physics.gravity = Vector3.down * marsGrav;
     }
 
@@ -93,10 +95,17 @@ public class Rover : MonoBehaviour {
         }
 
 		if (!isToppled && transform.up.y < 0) {
+			forwardOnTopple = new Vector3 (transform.forward.x, 0, transform.forward.z).normalized;
 			isToppled = true;
 			if (OnTopple != null) {
 				OnTopple ();
 			}
+		}
+
+		if (isToppled) {
+			camFollowPos.position = transform.position + Vector3.up * 10 - forwardOnTopple * 5;
+		} else {
+			camFollowPos.localPosition = camFollowLocalPos;
 		}
 
         float targetAngle = transform.eulerAngles.y + wheelAngle;
