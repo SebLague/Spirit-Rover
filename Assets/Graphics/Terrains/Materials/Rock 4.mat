@@ -63,11 +63,11 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _FadeDst: 0.4
+    - _FadeDst: 1.69
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _GroundHeight: 1.86
+    - _GroundHeight: 1.92
     - _GroundTexScale: 6.88
     - _Metallic: 0.13
     - _Mode: 0

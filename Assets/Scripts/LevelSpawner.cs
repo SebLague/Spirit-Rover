@@ -37,7 +37,7 @@ public class LevelSpawner : MonoBehaviour {
 		Transform roverSpawn = currentLevel.roverSpawn;
 		rover = Instantiate(roverPrefab, roverSpawn.position, roverSpawn.rotation, roverSpawn).GetComponent<Rover>();
 		FindObjectOfType<CamFollow> ().SetNewLevel (currentLevel.camStart, rover);
-		FindObjectOfType<ThoughtBubble> ().SetHead (rover.bubble);
+		FindObjectOfType<ThoughtBubble> ().SetRover (rover);
     }
 
 	void Update() {

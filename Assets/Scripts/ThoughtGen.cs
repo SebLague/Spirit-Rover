@@ -6,8 +6,8 @@ public class ThoughtGen : MonoBehaviour {
 
 	const float intialDelayBeforeRandomThoughts = 5;
 	const int numThoughtsBeforeRepeating = 20;
-	const float minTimeBetweenThoughts = 5;
-	const float maxTimeBetweenThoughts = 10;
+	const float minTimeBetweenThoughts = 6;
+	const float maxTimeBetweenThoughts = 15;
 	readonly Vector2 delayBetweenChainedThoughtsMinMax = new Vector2(1,2f);
 
 	public Thought[] beginThoughts;
@@ -30,6 +30,7 @@ public class ThoughtGen : MonoBehaviour {
 	ThoughtBubble bubble;
 	Queue<Thought> lastNThoughts = new Queue<Thought>();
 	float nextAllowedRandomThoughtTime;
+	float roverBeginTime;
 
 	void Start() {
 		
@@ -40,6 +41,7 @@ public class ThoughtGen : MonoBehaviour {
 		Rover.OnTopple += OnTopple;
 		Rover.OnBegin += Rover_OnBegin;
 		Console.OnHelpMenuOpen += ClearThought ;
+
 	}
 		
 
@@ -133,6 +135,7 @@ public class ThoughtGen : MonoBehaviour {
 
 	void Rover_OnBegin ()
 	{
+		roverBeginTime = Time.time;
 		nextAllowedRandomThoughtTime = Time.time + intialDelayBeforeRandomThoughts;
 		hasBegun = true;
 		ClearThought ();
@@ -144,16 +147,16 @@ public class ThoughtGen : MonoBehaviour {
 	}
 
 	void OnCommandUsed(Command command) {
-		float skipChance = 70;
-		if (DontSkip (skipChance)) {
-			if (command.commandType == Command.CommandType.Accelerate) {
-				ShowThought(accThoughts[Random.Range(0,accThoughts.Length)]);
-			}
-			else if (command.commandType == Command.CommandType.Brake) {
-				ShowThought(brakeThoughts[Random.Range(0,brakeThoughts.Length)]);
-			}
-			else if (command.commandType == Command.CommandType.Left || command.commandType == Command.CommandType.Right) {
-				ShowThought(turnThoughts[Random.Range(0,turnThoughts.Length)]);
+		if (Time.time - roverBeginTime > 5) {
+			float skipChance = 70;
+			if (DontSkip (skipChance)) {
+				if (command.commandType == Command.CommandType.Accelerate) {
+					ShowThought (accThoughts [Random.Range (0, accThoughts.Length)]);
+				} else if (command.commandType == Command.CommandType.Brake) {
+					ShowThought (brakeThoughts [Random.Range (0, brakeThoughts.Length)]);
+				} else if (command.commandType == Command.CommandType.Left || command.commandType == Command.CommandType.Right) {
+					ShowThought (turnThoughts [Random.Range (0, turnThoughts.Length)]);
+				}
 			}
 		}
 	}

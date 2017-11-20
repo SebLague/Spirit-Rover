@@ -16,6 +16,7 @@ public class Rover : MonoBehaviour {
 	public Transform camLook;
 	public Transform camFollowPos;
 	public Transform bubble;
+	public Transform head;
 
     public Transform[] wheels;
     Wheel[] wheelRefs;

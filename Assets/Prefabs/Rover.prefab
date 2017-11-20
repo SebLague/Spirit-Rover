@@ -151,7 +151,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4286696689089816}
   m_Layer: 0
-  m_Name: bubble
+  m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -666,6 +666,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1967602757260368
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4766831084548108}
+  m_Layer: 0
+  m_Name: bubble
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1986872158624622
 GameObject:
   m_ObjectHideFlags: 1
@@ -817,12 +832,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1166436945044514}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.87, y: 3.1, z: 1.37}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.035, y: 3.265, z: 1.37}
+  m_LocalScale: {x: 0.99999976, y: 1, z: 0.99999976}
   m_Children: []
   m_Father: {fileID: 4675478599058054}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4310926944190214
 Transform:
@@ -1055,6 +1070,7 @@ Transform:
   - {fileID: 4635246453852060}
   - {fileID: 4573177741025908}
   - {fileID: 4174435322868034}
+  - {fileID: 4766831084548108}
   - {fileID: 4286696689089816}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1089,6 +1105,19 @@ Transform:
   - {fileID: 4316975661144462}
   m_Father: {fileID: 4445852383445264}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4766831084548108
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1967602757260368}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.87, y: 3.1, z: 1.37}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4675478599058054}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4779282218470416
 Transform:
@@ -2653,7 +2682,8 @@ MonoBehaviour:
   dstToAngle: 20
   camLook: {fileID: 4573177741025908}
   camFollowPos: {fileID: 4174435322868034}
-  bubble: {fileID: 4286696689089816}
+  bubble: {fileID: 4766831084548108}
+  head: {fileID: 4286696689089816}
   wheels:
   - {fileID: 4889047350938300}
   - {fileID: 4585092174609250}

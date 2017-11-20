@@ -30,6 +30,7 @@ public class ThoughtBubble : MonoBehaviour {
 	Transform cam;
 	float offsetY;
 	Coroutine currentCoroutine;
+	Rover rover;
 
 	void Awake() {
 		roverHead = FindObjectOfType<Rover> ().bubble;
@@ -40,8 +41,9 @@ public class ThoughtBubble : MonoBehaviour {
 		Deactivate ();
 	}
 
-	public void SetHead(Transform t) {
-		roverHead = t;
+	public void SetRover(Rover t) {
+		roverHead = t.bubble;
+		rover = t;
 	}
 
 	public void ShowThought(string thought,float duration) {
@@ -52,7 +54,7 @@ public class ThoughtBubble : MonoBehaviour {
 	}
 
 	IEnumerator ThoughtProcess(string thought, float duration) {
-		transform.position = cam.position + cam.forward * offset.z + cam.right * offset.x + cam.up * offset.y;
+		//transform.position = cam.position + cam.forward * offset.z + cam.right * offset.x + cam.up * offset.y;
 
 		bool useBigBubble = thought.Length > 16;
 		currentSprites = (useBigBubble) ? largeSprites : smallSprites;
@@ -64,8 +66,9 @@ public class ThoughtBubble : MonoBehaviour {
 		smallText.gameObject.SetActive (!useBigBubble);
 		r.gameObject.SetActive (true);
 
-		float headBelowBubbleDst = Mathf.Clamp(transform.position.y -roverHead.position.y,0,float.MaxValue);
-		offsetY = Mathf.Lerp (offset.y, minY, headBelowBubbleDst / 6f);
+		//float headBelowBubbleDst = Mathf.Clamp(transform.position.y -roverHead.position.y,0,float.MaxValue);
+		//offsetY = Mathf.Lerp (offset.y, minY, headBelowBubbleDst / 6f);
+		offsetY = rover.isToppled?minY:offset.y;
 		//Debug.Log (headBelowBubbleDst + "  " + (headBelowBubbleDst / 6f) + "   " + offsetY);
 		float endTime = Time.time + duration;
 

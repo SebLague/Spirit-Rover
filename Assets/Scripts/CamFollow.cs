@@ -19,7 +19,7 @@ public class CamFollow : MonoBehaviour {
 		SetLookPos ();
 
 		brain = GetComponent<CinemachineBrain> ();
-		brain.ActiveVirtualCamera.LookAt = lookPos;
+		brain.ActiveVirtualCamera.LookAt = r.head;
 		brain.ActiveVirtualCamera.Follow = rover.transform;
 
 	}

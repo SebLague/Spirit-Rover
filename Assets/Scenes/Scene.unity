@@ -485,8 +485,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 202197162}
-  m_LocalRotation: {x: 0.00080656644, y: -0.9959064, z: 0.08994755, w: 0.0089045195}
-  m_LocalPosition: {x: 27.516037, y: 7.7999997, z: 58.678066}
+  m_LocalRotation: {x: -0.00056750025, y: 0.99856603, z: -0.05243815, w: -0.010762336}
+  m_LocalPosition: {x: 27.59182, y: 7.439666, z: 58.28021}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -759,11 +759,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a07991fce5ab6432db1393b21d572304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skipIntro: 0
+  skipIntro: 1
   disable:
   - {fileID: 2142506216}
   - {fileID: 319407732}
-  - {fileID: 1040578197}
   enable:
   - {fileID: 1906180395}
   - {fileID: 209828220}
@@ -1516,6 +1515,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 791367714}
+--- !u!4 &799530747 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4286696689089816, guid: 55be22b0c0ce94986adea76f725be5fd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1450095459}
 --- !u!1 &799655528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1626,7 +1630,7 @@ MonoBehaviour:
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
   m_Priority: 10
-  m_LookAt: {fileID: 1526180596}
+  m_LookAt: {fileID: 799530747}
   m_Follow: {fileID: 1526180596}
   m_Lens:
     FieldOfView: 40
@@ -1641,8 +1645,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 921890954}
-  m_LocalRotation: {x: 0.00080656644, y: -0.9959064, z: 0.08994755, w: 0.0089045195}
-  m_LocalPosition: {x: 27.516037, y: 7.7999997, z: 58.678066}
+  m_LocalRotation: {x: -0.00056750025, y: 0.99856603, z: -0.05243815, w: -0.010762336}
+  m_LocalPosition: {x: 27.504948, y: 6.59, z: 58.058167}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1812617184}
@@ -1993,7 +1997,6 @@ MonoBehaviour:
   - text: I'm so lonely...
     continuation:
     - I have nobody...
-    - To call my own.
   - text: Maybe if i do a good enough job, they'll let me come home.
     continuation: []
   - text: Am I doing a good job?
@@ -3820,8 +3823,8 @@ GameObject:
   - component: {fileID: 1812617184}
   - component: {fileID: 1812617188}
   - component: {fileID: 1812617187}
-  - component: {fileID: 1812617186}
   - component: {fileID: 1812617185}
+  - component: {fileID: 1812617186}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -3868,12 +3871,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 0
-  m_FollowOffset: {x: 0, y: 5, z: -12.08}
-  m_XDamping: 3
-  m_YDamping: 3
-  m_ZDamping: 3
-  m_PitchDamping: 4.4
-  m_YawDamping: 4.6
+  m_FollowOffset: {x: 0, y: 3.79, z: -11.46}
+  m_XDamping: 1
+  m_YDamping: 1
+  m_ZDamping: 1
+  m_PitchDamping: 0
+  m_YawDamping: 0
   m_RollDamping: 0
 --- !u!114 &1812617187
 MonoBehaviour:
@@ -3886,19 +3889,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 2.8, z: 0}
+  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 3
   m_HorizontalDamping: 4
   m_VerticalDamping: 4
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_DeadZoneWidth: 0.16
-  m_DeadZoneHeight: 0.15
-  m_SoftZoneWidth: 0.45
-  m_SoftZoneHeight: 0.53
+  m_DeadZoneWidth: 0.089
+  m_DeadZoneHeight: 0.08
+  m_SoftZoneWidth: 0.15
+  m_SoftZoneHeight: 0.2
   m_BiasX: 0
-  m_BiasY: 0.1599999
+  m_BiasY: 0
 --- !u!114 &1812617188
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -4262,6 +4265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50e04cb49ea3347d18656b7333acbcda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showHelpByDefault: 0
   maxNumLinesOnScreen: 18
   charLimit: 12
   lineSpacing: 27

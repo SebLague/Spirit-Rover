@@ -66,11 +66,13 @@ public class Intro : MonoBehaviour {
 					}
 				}
 			}
+
+			if (Input.GetKeyDown (KeyCode.Return)) {
+				EndIntro ();
+			}
 		}
 
-		if (Input.GetKeyDown (KeyCode.Return)) {
-			EndIntro ();
-		}
+
 	}
 
 	void InitIntro() {
@@ -112,6 +114,7 @@ public class Intro : MonoBehaviour {
 		foreach (GameObject g in enable) {
 			g.SetActive (false);
 		}
+		light.eulerAngles = targetLightRot;
 
 	}
 

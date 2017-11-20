@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.Linq;
 public class Console : MonoBehaviour {
 
+	public bool showHelpByDefault;
 	public static event System.Action OnHelpMenuOpen;
 	public static bool helpMenuOpen;
 
@@ -55,6 +56,8 @@ public class Console : MonoBehaviour {
 		Rover.OnCommandRunForFirstTime += CommandRunOnRover;
 		Rover.OnCommandsFinished += CommandsFinished;
 		highlightLine.gameObject.SetActive (false);
+		helpMenu.gameObject.SetActive (showHelpByDefault);
+		helpMenuOpen = showHelpByDefault;
     }
 
 	void CommandsFinished() {
