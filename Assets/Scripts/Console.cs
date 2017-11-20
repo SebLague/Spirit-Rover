@@ -40,7 +40,7 @@ public class Console : MonoBehaviour {
     void Awake()
     {
 		
-        GenerateTextFields();
+        //GenerateTextFields();
         ClearTextFields();
         lines.Add("");
 

@@ -225,6 +225,11 @@ public class Rover : MonoBehaviour {
 		}
     }
 
+	void OnDestroy() {
+		if (audio != null) {
+			audio.volume = 0;
+		}
+	}
   
 
 

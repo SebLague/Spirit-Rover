@@ -75,6 +75,13 @@ public class ThoughtGen : MonoBehaviour {
 	}
 
 	void Update() {
+		#if UNITY_EDITOR
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			Thought t = new Thought ();
+			t.text = "Did I do a good job?";
+			ShowThought (t, true);
+		}
+		#endif
 		if (hasBegun) {
 			if (HappyForNewThought ()) {
 				if (Rover.instance.hasWon) {
