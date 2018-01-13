@@ -9,7 +9,7 @@ public static class Geometry
 	{
 		float s1 = -b.y + a.y;
 		float s2 = b.x - a.x;
-		return Math.Abs((c.x - a.x) * s1 + (c.y - a.y) * s2) / Mathf.Sqrt(s1*s1 + s2*s2);
+		return Mathf.Abs((c.x - a.x) * s1 + (c.y - a.y) * s2) / Mathf.Sqrt(s1*s1 + s2*s2);
 	}
 
 	public static Vector2 ClosestPointOnLineSeg(Vector2 a, Vector2 b, Vector2 p) {
